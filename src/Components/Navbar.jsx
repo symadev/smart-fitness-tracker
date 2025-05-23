@@ -2,7 +2,7 @@ import logo from "../assets/gym logo.png";
 
 const Navbar = () => {
   return (
-    <div className="navbar bg-[#1d0827] text-white px-4">
+    <div className="navbar bg-[#15051c] text-white px-4">
       <div className="flex items-center gap-2 flex-1">
         <img className="w-12 h-12 rounded-full object-cover" src={logo} alt="Logo" />
         <span className="text-xl font-bold">SmartFit</span>
