@@ -1,25 +1,32 @@
-import img1 from "../assets/images/1.png";
+import img1 from "../assets/images/1.jpg";
 
 const Banner = () => {
   return (
-<div
-  className="relative bg-cover bg-center bg-no-repeat h-[500px] flex items-center justify-start text-white px-6 md:px-16"
-  style={{ backgroundImage: `url(${img1})` }}
->
-  <div className=" p-8 rounded-xl text-left max-w-2xl w-full">
-    <h1 className="text-4xl md:text-5xl font-extrabold leading-tight mb-4">
-      Be Physically Fit <br /> And Healthy
-    </h1>
-    <p className="text-gray-200 mb-6">
-      Your body is your most valuable asset—keep it strong, agile, and energized.
-      Regular exercise not only boosts physical strength but also sharpens your mind and uplifts your mood.
-    </p>
-    <button className="btn btn-outline btn-warning rounded-xl">
-      About Us
-    </button>
-  </div>
+    <div className="bg-[#0f1f60] min-h-[500px] flex flex-col lg:flex-row items-center justify-between px-6 py-12 gap-4 text-white">
+      
+      {/* Image Section */}
+   <div className="flex-shrink-0 p-2 lg:ml-20">  {/* padding moved here */}
+  <img
+    src={img1}
+    alt="Workout"
+    className="w-80 h-80 max-w-full object-cover rounded-full border-4 border-blue-500 shadow-xl"
+  />
 </div>
 
+
+      {/* Text Section */}
+      <div className="text-left max-w-xl m-4">
+        <h1 className="text-4xl md:text-5xl font-bold mb-4">
+          Health Made Easy <br className="hidden md:block" /> With AI
+        </h1>
+        <p className="mb-6 text-gray-200 leading-relaxed">
+          Your body is your most valuable asset—keep it strong, agile, and energized.
+          <br />
+          Regular exercise not only boosts physical strength but also sharpens your mind and uplifts your mood.
+        </p>
+        <button className="btn btn-outline btn-warning rounded-xl">About Us</button>
+      </div>
+    </div>
   );
 };
 
