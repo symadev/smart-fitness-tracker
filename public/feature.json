@@ -1,0 +1,31 @@
+[
+    {
+        "id":1,
+        "logo":"/src/assets/images/strength training.png",
+        "category_name":"strength Training",
+        "Description":"Strength training is a form of exercise that focuses on improving muscular strength and endurance through resistance-based movements"
+
+    },
+    {
+        "id":2,
+        "logo":"/src/assets/images/yoga.png",
+        "category_name":"Basic Yoga",
+        "Description":"Basic Yoga is a gentle introduction to the ancient practice that focuses on foundational postures, mindful breathing, and body awareness"
+
+    },
+    {
+        "id":3,
+        "logo":"/src/assets/images/body-building.png",
+        "category_name":"Body Building",
+        "Description":"Bodybuilding is more than just lifting weights—it's a discipline that combines physical training, mental resilience, and nutritional strategy"
+
+    },
+    {
+        "id":4,
+        "logo":"/src/assets/images/run.png",
+        "category_name":"Weight loss",
+        "Description":"Losing weight isn't just about shedding pounds—it’s about creating a lifestyle that promotes overall well-being"
+
+    }
+
+]

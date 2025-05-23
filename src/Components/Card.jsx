@@ -30,31 +30,40 @@ const Card = () => {
 
   return (
     <div className="min-h-[500px] bg-[#0f1f60] p-6 flex flex-col items-center">
-      <div className="flex flex-wrap justify-center">
-        {cardData.map((card, index) => (
-          <motion.div
-            key={index}
-            className="card bg-[#0f1f60] w-72 md:w-64 shadow-xl m-4 rounded-xl"
-            initial={{ opacity: 0, y: 50, scale: 0.95 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            whileHover={{ scale: 1.05 }}
-            transition={{ duration: 0.8, ease: "easeOut", delay: card.delay }}
-          >
-            <figure className="px-4 pt-4">
-              <img
-                src={card.image}
-               
-                className="rounded-lg w-full h-32 object-cover"
-              />
-            </figure>
-            <div className="card-body p-4 items-center text-center">
-              <h2 className="card-title text-lg text-white">{card.title}</h2>
-             
-            </div>
-          </motion.div>
-        ))}
-      </div>
-    </div>
+  {/* Section Title */}
+  <div className="text-center mb-8 max-w-2xl">
+    <h2 className="text-4xl md:text-4xl font-bold text-white leading-snug">
+      Smart Fitness Tips to Kickstart <br />
+      Your Journey!
+    </h2>
+  </div>
+
+  {/* Cards Container */}
+  <div className="flex flex-wrap justify-center">
+    {cardData.map((card, index) => (
+      <motion.div
+        key={index}
+        className="card bg-[#0f1f60] w-72 md:w-64 shadow-xl m-4 rounded-xl"
+        initial={{ opacity: 0, y: 50, scale: 0.95 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        whileHover={{ scale: 1.05 }}
+        transition={{ duration: 0.8, ease: "easeOut", delay: card.delay }}
+      >
+        <figure className="px-4 pt-4">
+          <img
+            src={card.image}
+            alt="Fitness tip"
+            className="rounded-lg w-full h-32 object-cover"
+          />
+        </figure>
+        <div className="card-body p-4 items-center text-center">
+          <h2 className="card-title text-lg text-white">{card.title}</h2>
+        </div>
+      </motion.div>
+    ))}
+  </div>
+</div>
+
   );
 };
 
