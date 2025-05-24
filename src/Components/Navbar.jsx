@@ -10,9 +10,15 @@ const Navbar = () => {
 
       {/* Desktop menu */}
       <ul className="hidden md:flex gap-6 items-center text-yellow-400">
-        <li><a className="hover:text-yellow-300 text-[16px] cursor-pointer">Login</a></li>
         <li>
-          <button className="btn btn-outline btn-warning rounded-xl">Get The App</button>
+          <a href="/login" className="hover:text-yellow-300 text-[16px] cursor-pointer">
+            Login
+          </a>
+        </li>
+        <li>
+          <a href="/get-app">
+            <button className="btn btn-outline btn-warning rounded-xl">Get The App</button>
+          </a>
         </li>
       </ul>
 
@@ -27,8 +33,8 @@ const Navbar = () => {
         <option value="" disabled>
           Menu
         </option>
-        <option value="#dashboard">Login</option>
-        <option value="#get-app">Get The App</option>
+        <option value="/login">Login</option>
+        <option value="/get-app">Get The App</option>
       </select>
     </div>
   );
