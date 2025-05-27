@@ -8,6 +8,10 @@ import Login from "./Login";
 import Register from "./Register";
 import PrivateAdminRoute from "./PrivateAdminRoute";
 import DashBoard from "./Pages/DashBoard";
+import DashboardHome from "./Pages/DashboardHome";
+import WorkoutLogs from "./Pages/WorkoutLogs";
+import AiCoach from "./Pages/AiCoach";
+import Settings from "./Pages/Settings";
 
 
 const router = createBrowserRouter([
@@ -30,6 +34,25 @@ const router = createBrowserRouter([
        {
         path: "/dashboard",
         element:<PrivateAdminRoute><DashBoard></DashBoard></PrivateAdminRoute>,
+        children: [
+    
+    {
+      path: "home",
+      element: <DashboardHome />,
+    },
+    {
+      path: "workouts",
+      element: <WorkoutLogs />,
+    },
+    {
+      path: "ai-coach",
+      element: <AiCoach/>,
+    },
+    {
+      path: "settings",
+      element: <Settings />,
+    },
+  ],
        },
     ],
   },

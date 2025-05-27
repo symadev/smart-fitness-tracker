@@ -11,19 +11,17 @@ const PrivateAdminRoute = ({ children }) => {
 //   console.log("Is Admin:", isAdmin); // Log if user is admin
 
   if (loading || isAdminLoading) {
-    return <div>Loading...</div>;
+   return <progress className="progress w-56"></progress>
   }
 
-  if (!user) {
-    // If no user is logged in, redirect to login page
-    return <Navigate to="/login" state={{ from: location }} replace />;
-  }
+ if (!user) {
+  return <Navigate to="/login" state={{ from: location }} replace />;
+}
 
-  if (user && isAdmin) {
-    return children;
-  }
+if (loading || isAdminLoading) {
+  return <progress className="progress w-56"></progress>;
+}
 
-  return <Navigate to="/" state={{ from: location }} replace />;
 };
 
 export default PrivateAdminRoute;
