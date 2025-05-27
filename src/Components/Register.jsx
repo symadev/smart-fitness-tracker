@@ -20,7 +20,7 @@ const Register = () => {
           role: 'user',
           createdAt: new Date()
         };
-        axios.post('http://localhost:5000/users', newUser)
+        axios.post('http://localhost:5000/user', newUser)
           .then(() => {
             reset();
             Swal.fire({
@@ -47,7 +47,7 @@ const Register = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-[#0f1f60]">
-      <div className="bg-[#0d1a48] p-8 rounded-2xl shadow-lg w-full max-w-md text-white">
+      <div className="bg-[#0e1c4b]  p-8 rounded-2xl shadow-lg w-full max-w-md text-white">
         <h2 className="text-2xl font-bold text-center mb-6">
           SmartFit <span className="ml-1">🏋️‍♂️</span>
         </h2>

@@ -27,7 +27,7 @@ const Login = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-[#0f1f60]">
-      <div className="bg-[#0d1a48] p-8 rounded-2xl shadow-lg w-full max-w-md">
+      <div className="bg-[#0e1c4b] p-8 rounded-2xl shadow-lg w-full max-w-md">
         <h2 className="text-2xl font-bold text-center text-white mb-8">
           Smartfit <span className="ml-1">🏋️‍♂️</span>
         </h2>

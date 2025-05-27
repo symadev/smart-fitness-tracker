@@ -6,6 +6,8 @@ import MainLayout from "./MainLayout";
 import Home from "./Home";
 import Login from "./Login";
 import Register from "./Register";
+import PrivateAdminRoute from "./PrivateAdminRoute";
+import DashBoard from "./Pages/DashBoard";
 
 
 const router = createBrowserRouter([
@@ -25,6 +27,10 @@ const router = createBrowserRouter([
         path: "register",
         element:<Register></Register>
       },
+       {
+        path: "/dashboard",
+        element:<PrivateAdminRoute><DashBoard></DashBoard></PrivateAdminRoute>,
+       },
     ],
   },
 ]);

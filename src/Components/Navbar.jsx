@@ -1,6 +1,19 @@
+import { Link } from "react-router-dom";
 import logo from "../assets/gym logo.png";
+import { AuthContext } from "./Provider.jsx/AuthContext";
+import { useContext } from "react";
 
 const Navbar = () => {
+  const { user, logOut } = useContext(AuthContext);
+
+  const handleLogout = () => {
+    logOut()
+      .then(() => {
+        console.log("Logged out successfully");
+      })
+      .catch((error) => console.error(error));
+  };
+
   return (
     <div className="navbar bg-[#0f1f60] text-white px-4 sticky top-0 z-50 flex items-center justify-between">
       <div className="flex items-center gap-2 flex-1">
@@ -11,9 +24,26 @@ const Navbar = () => {
       {/* Desktop menu */}
       <ul className="hidden md:flex gap-6 items-center text-yellow-400">
         <li>
-          <a href="/login" className="hover:text-yellow-300 text-[16px] cursor-pointer">
-            Login
-          </a>
+          <div className="flex items-center gap-4">
+            {user ? (
+              <>
+                <span className="text-sm">Welcome, {user.email}</span>
+                <button
+                  onClick={handleLogout}
+                  className="hover:text-yellow-300 text-[16px] cursor-pointer"
+                >
+                  Logout
+                </button>
+              </>
+            ) : (
+              <Link to="/login" className="hover:text-yellow-300 text-[16px] cursor-pointers">Login</Link>
+            )}
+          </div>
+        </li>
+        <li>
+          <Link to="/dashboard" className="hover:text-yellow-300 text-[16px] cursor-pointer">
+            Dashboard
+          </Link>
         </li>
         <li>
           <a href="/get-app">
@@ -33,7 +63,14 @@ const Navbar = () => {
         <option value="" disabled>
           Menu
         </option>
-        <option value="/login">Login</option>
+        {user ? (
+          <>
+            <option value="/dashboard">Dashboard</option>
+            <option value="#" onClick={handleLogout}>Logout</option>
+          </>
+        ) : (
+          <option value="/login">Login</option>
+        )}
         <option value="/get-app">Get The App</option>
       </select>
     </div>
