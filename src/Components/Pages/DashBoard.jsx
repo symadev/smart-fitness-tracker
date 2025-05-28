@@ -1,13 +1,14 @@
 // Dashboard.jsx
 import { NavLink, Outlet } from "react-router-dom";
 import { FaHome, FaDumbbell, FaRobot, FaCog } from "react-icons/fa";
-import logo from "../../assets/images/gym logo.png"
+import logo from "../../assets/images/gym logo.png";
 
 const Dashboard = () => {
   return (
     <div className="flex">
       {/* Sidebar */}
       <aside className="w-64 min-h-screen bg-[#0f1f60] text-white flex flex-col">
+        {/* Logo */}
         {/* Logo */}
         <div className="grid items-center gap-2 ml-24  py-6">
           <div className=" w-16 h-16 rounded-full  items-center justify-center text-xl font-bold">
@@ -18,7 +19,7 @@ const Dashboard = () => {
         </div>
 
         {/* Section Title */}
-        <h2 className="text-xs  text-gray-400 px-6 mb-4">MENU</h2>
+        <h2 className="text-xs text-gray-400 px-6 mb-4">MENU</h2>
 
         {/* Navigation Links */}
         <ul className="flex flex-col gap-2 px-4 text-sm font-medium">
@@ -34,13 +35,15 @@ const Dashboard = () => {
           <li>
             <SidebarLink to="/dashboard/settings" icon={<FaCog />} text="Settings" />
           </li>
+          <li>
+            <SidebarLink to="/" icon={<FaHome />} text="Home" />
+          </li>
         </ul>
 
         {/* Footer */}
         <div className="mt-auto px-6 text-xs text-white py-6">
           <h3 className="mb-1">SmartFit</h3>
           <p className="mb-4">Be stronger than your excuses. Welcome to SmartFit</p>
-         
         </div>
       </aside>
 
