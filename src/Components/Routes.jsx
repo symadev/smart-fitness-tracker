@@ -32,7 +32,7 @@ const router = createBrowserRouter([
         element:<Register></Register>
       },
        {
-        path: "/dashboard",
+        path: "dashboard",
         element:<PrivateAdminRoute><DashBoard></DashBoard></PrivateAdminRoute>,
         children: [
     
