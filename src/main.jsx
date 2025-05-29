@@ -7,6 +7,7 @@ import { RouterProvider } from 'react-router-dom';
 import AuthProvider from './Components/Provider.jsx/AuthContext';
 // ✅ নিশ্চিত করুন সঠিক path
 
+
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <AuthProvider> {/* ✅ এখানে AuthProvider দিয়ে RouterProvider-কে wrap করা হয়েছে */}

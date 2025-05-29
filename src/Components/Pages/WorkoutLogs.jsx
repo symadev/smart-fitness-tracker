@@ -1,4 +1,6 @@
 import { useState } from "react";
+import axios from "axios";
+import Swal from "sweetalert2";
 
 const WorkoutLogs = () => {
   const [formData, setFormData] = useState({
@@ -12,14 +14,55 @@ const WorkoutLogs = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);
-    // Send to backend or handle form data here
+
+    const token = localStorage.getItem("access-token");
+    const userEmail = localStorage.getItem("user-email");
+
+    try {
+      const res = await axios.post(
+        "http://localhost:5000/workouts",
+        {
+          ...formData,
+          userEmail,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      // Show success popup
+      Swal.fire({
+        icon: "success",
+        title: "Workout Saved!",
+        text: "Your workout log has been saved successfully.",
+        confirmButtonColor: "#1e40af",
+      });
+
+      // Reset form
+      setFormData({
+        workoutType: "",
+        duration: "",
+        reps: "",
+        date: "",
+      });
+    } catch (error) {
+      console.error("Failed to save workout:", error);
+
+      Swal.fire({
+        icon: "error",
+        title: "Save Failed",
+        text: "There was an error saving your workout. Please try again.",
+        confirmButtonColor: "#d33",
+      });
+    }
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[#0f1f60] ">
+    <div className="min-h-screen flex items-center justify-center bg-[#0f1f60]">
       <div className="w-full max-w-md bg-[#0e1c4b] text-white rounded-xl shadow-lg p-8">
         <h2 className="text-3xl font-bold text-center mb-6">Log Workout</h2>
 
