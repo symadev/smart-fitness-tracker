@@ -25,7 +25,7 @@ const WorkoutLogs = () => {
         "http://localhost:5000/workouts",
         {
           ...formData,
-          userEmail,
+           userEmail,
         },
         {
           headers: {
