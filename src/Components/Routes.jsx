@@ -35,6 +35,10 @@ const router = createBrowserRouter([
         path: "dashboard",
         element:<PrivateAdminRoute><DashBoard></DashBoard></PrivateAdminRoute>,
         children: [
+          {
+      index: true, //  This makes DashboardHome the default
+      element: <DashboardHome />,
+    },
     
     {
       path: "home",

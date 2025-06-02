@@ -29,7 +29,7 @@ const WorkoutSummary = () => {
 
         const allWorkouts = res.data;
 
-        // ✅ Filter to match both 'email' and 'userEmail'
+        //  Filter to match both 'email' and 'userEmail'
         const workouts = allWorkouts.filter(
           (w) => w.email === email || w.userEmail === email
         );
@@ -57,7 +57,7 @@ const WorkoutSummary = () => {
   }, []);
 
   return (
-    <div className="bg-[#0e1c4b] p-6 rounded-xl shadow-lg text-white mb-8">
+    <div className="bg-gradient-to-r from-cyan-500 to-blue-600 p-6 rounded-xl shadow-lg text-white mb-8">
       <h2 className="text-xl font-semibold mb-4">Workout Summary</h2>
       <ul className="space-y-2">
         {Object.entries(summary).map(([type, percent]) => (

@@ -58,7 +58,7 @@ const AiCoach = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-[#0f1f60] px-4">
-      <div className="w-full max-w-md bg-[#0e1c4b] text-white rounded-xl shadow-lg p-6 flex flex-col justify-between h-[80vh]">
+      <div className="w-full max-w-md bg-gradient-to-r from-cyan-500 to-blue-600 text-white rounded-xl shadow-lg p-6 flex flex-col justify-between h-[80vh]">
         <h2 className="text-2xl font-bold text-center mb-4">
           AI COACH <span className="ml-1">🤖</span>
         </h2>
@@ -69,8 +69,8 @@ const AiCoach = () => {
               key={idx}
               className={`p-3 rounded-lg text-sm ${
                 entry.type === "user"
-                  ? "bg-[#2c2c54] self-end text-right"
-                  : "bg-[#132766] self-start text-left"
+                  ? "bg-[#4f4ffe] self-end text-right"
+                  : "bg-[#4b4bfe]  self-start text-left"
               }`}
             >
               {entry.message}
@@ -86,7 +86,7 @@ const AiCoach = () => {
             placeholder="Ask a question"
             value={question}
             onChange={(e) => setQuestion(e.target.value)}
-            className="flex-1 px-4 py-2 rounded-md bg-[#2c2c54] text-white placeholder-gray-400 focus:ring-2 focus:ring-pink-500"
+            className="flex-1 px-4 py-2 rounded-md bg-[#4f4ffe] text-white placeholder-gray-400 focus:ring-2 focus:ring-pink-500"
             required
             disabled={loading}
           />

@@ -20,7 +20,7 @@ const data = [
 
 const ProgressBarChart = () => {
   return (
-    <div className="bg-[#0e1c4b] p-6 rounded-xl shadow-lg">
+    <div className="bg-gradient-to-r from-cyan-500 to-blue-700 p-6 rounded-xl shadow-lg">
       <h2 className="text-xl font-semibold mb-4 text-white">Progress Chart</h2>
       <ResponsiveContainer width="100%" height={200}>
         <BarChart data={data}>

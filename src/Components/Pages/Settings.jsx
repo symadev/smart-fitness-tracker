@@ -14,7 +14,7 @@ const Settings = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-[#0f1f60] px-4">
-      <div className="w-full max-w-md bg-[#0e1c4b] text-white rounded-xl shadow-lg p-6">
+      <div className="w-full max-w-md bg-gradient-to-r from-cyan-500 to-blue-600 text-white rounded-xl shadow-lg p-6">
         <h2 className="text-2xl font-bold flex items-center gap-2 mb-6">
           <span className="text-blue-400">⚙️</span> SETTINGS
         </h2>
@@ -29,7 +29,7 @@ const Settings = () => {
                 checked={themeEnabled}
                 onChange={() => setThemeEnabled(!themeEnabled)}
               />
-              <div className="w-11 h-6 bg-gray-300 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-blue-500 rounded-full peer dark:bg-gray-700 peer-checked:bg-blue-600 transition-all"></div>
+              <div className="w-11 h-6 bg-gray-300 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-blue-900 rounded-full peer dark:bg-white peer-checked:bg-blue-900 transition-all"></div>
             </label>
           </div>
 
@@ -42,7 +42,7 @@ const Settings = () => {
                 checked={notificationsEnabled}
                 onChange={() => setNotificationsEnabled(!notificationsEnabled)}
               />
-              <div className="w-11 h-6 bg-gray-300 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-blue-500 rounded-full peer dark:bg-gray-700 peer-checked:bg-blue-600 transition-all"></div>
+              <div className="w-11 h-6 bg-gray-300 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-blue-900 rounded-full peer dark:bg-white peer-checked:bg-blue-900 transition-all"></div>
             </label>
           </div>
         </div>
@@ -55,7 +55,7 @@ const Settings = () => {
               placeholder="Name"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              className="w-full px-4 py-2 rounded-md bg-[#2c2c54] text-white placeholder-gray-400 focus:ring-2 focus:ring-pink-500"
+              className="w-full px-4 py-2 rounded-md bg-[#4f4ffe] text-white placeholder-gray-400 focus:ring-2 focus:ring-pink-500"
               required
             />
             <input
@@ -63,7 +63,7 @@ const Settings = () => {
               placeholder="Email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full px-4 py-2 rounded-md bg-[#2c2c54] text-white placeholder-gray-400 focus:ring-2 focus:ring-pink-500"
+              className="w-full px-4 py-2 rounded-md bg-[#4f4ffe] text-white placeholder-gray-400 focus:ring-2 focus:ring-pink-500"
               required
             />
             <button

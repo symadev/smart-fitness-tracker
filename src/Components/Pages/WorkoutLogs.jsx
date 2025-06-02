@@ -63,7 +63,7 @@ const WorkoutLogs = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-[#0f1f60]">
-      <div className="w-full max-w-md bg-[#0e1c4b] text-white rounded-xl shadow-lg p-8">
+      <div className="w-full max-w-md bg-gradient-to-r from-cyan-500 to-blue-600 text-white rounded-xl shadow-lg p-8">
         <h2 className="text-3xl font-bold text-center mb-6">Log Workout</h2>
 
         <form onSubmit={handleSubmit} className="space-y-5">
@@ -73,7 +73,7 @@ const WorkoutLogs = () => {
               name="workoutType"
               value={formData.workoutType}
               onChange={handleChange}
-              className="w-full px-3 py-2 rounded-md bg-[#2c2c54] text-white focus:ring-2 focus:ring-pink-500"
+              className="w-full px-3 py-2 rounded-md bg-[#4f4ffe] text-white focus:ring-2 focus:ring-pink-500"
               required
             >
               <option value="">Select Workout</option>
@@ -92,7 +92,7 @@ const WorkoutLogs = () => {
                 name="duration"
                 value={formData.duration}
                 onChange={handleChange}
-                className="w-full px-3 py-2 rounded-md bg-[#2c2c54] text-white placeholder-gray-400 focus:ring-2 focus:ring-pink-500"
+                className="w-full px-3 py-2 rounded-md bg-[#4f4ffe] text-white placeholder-gray-400 focus:ring-2 focus:ring-pink-500"
                 placeholder="e.g. 30 mins"
                 required
               />
@@ -104,7 +104,7 @@ const WorkoutLogs = () => {
                 name="reps"
                 value={formData.reps}
                 onChange={handleChange}
-                className="w-full px-3 py-2 rounded-md bg-[#2c2c54] text-white placeholder-gray-400 focus:ring-2 focus:ring-pink-500"
+                className="w-full px-3 py-2 rounded-md bg-[#4f4ffe] text-white placeholder-gray-400 focus:ring-2 focus:ring-pink-500"
                 placeholder="e.g. 10"
                 required
               />
@@ -118,7 +118,7 @@ const WorkoutLogs = () => {
               name="date"
               value={formData.date}
               onChange={handleChange}
-              className="w-full px-3 py-2 rounded-md bg-[#2c2c54] text-white focus:ring-2 focus:ring-pink-500"
+              className="w-full px-3 py-2 rounded-md bg-[#4f4ffe] text-white focus:ring-2 focus:ring-pink-500"
               required
             />
           </div>

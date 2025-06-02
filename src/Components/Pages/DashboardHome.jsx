@@ -1,9 +1,10 @@
-import WorkoutLogs from "./WorkoutLogs";
+
 import ProgressBarChart from "../../Components/ProgressBarChart";
 import { FaRobot } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import WorkoutSummary from "../WorkoutSummary";
+import { Link } from "react-router-dom";
 
 
 
@@ -71,7 +72,7 @@ console.log("Token:", localStorage.getItem("access-token"));
 
   return (
     <div className="min-h-screen bg-[#0f1f60] text-white p-6">
-      <h1 className="text-4xl font-bold mb-6 text-center">Fitness Dashboard</h1>
+      <h1 className="text-cyan-300 text-4xl font-bold mb-6 text-center">Fitness Dashboard</h1>
 
       {/* Top Section */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
@@ -79,27 +80,27 @@ console.log("Token:", localStorage.getItem("access-token"));
   <WorkoutSummary />
 
         {/* AI Coach */}
-        <div className="bg-[#0e1c4b] p-6 rounded-xl shadow-lg flex flex-col items-center justify-center">
+        <div className="bg-gradient-to-r from-cyan-500 to-blue-500 p-6 rounded-xl shadow-lg flex flex-col items-center justify-center">
           <FaRobot size={54} className="text-pink-500 mb-3" />
           <h2 className="text-xl font-semibold mb-2">Talk to AI Coach</h2>
-          <button className="bg-gradient-to-r from-pink-500 to-pink-700 hover:from-pink-600 hover:to-pink-800 px-6 py-2 rounded-lg font-semibold">
+          <Link  to="/dashboard/ai-coach" className="bg-gradient-to-r btn btn-neutral from-pink-500 to-pink-700 hover:from-pink-600 hover:to-pink-800 px-6 py-2 rounded-lg  border-0 font-semibold">
             Chat Now
-          </button>
+          </Link>
         </div>
 
         {/* Bar Chart */}
-        <div className="bg-[#0e1c4b] p-6 rounded-xl shadow-lg">
+        <div className="bg-gradient-to-r from-cyan-500 to-blue-500 p-6 rounded-xl shadow-lg">
           <h2 className="text-xl font-semibold mb-4">Weekly Progress</h2>
           <ProgressBarChart />
         </div>
       </div>
 
       {/* Workout Log Table */}
-      <div className="bg-[#0e1c4b] p-6 rounded-xl shadow-lg mb-8">
+      <div className="bg-gradient-to-r from-cyan-500 to-blue-700 p-6 rounded-xl shadow-lg mb-8">
         <h2 className="text-xl font-semibold mb-4">Workout Logs</h2>
         <table className="w-full text-left">
           <thead>
-            <tr className="text-pink-400">
+            <tr className="text-white">
               <th>Date</th>
               <th>Exercise</th>
               <th>Sets</th>
