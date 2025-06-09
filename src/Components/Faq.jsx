@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import img5 from "../assets/images/5.png";
 
 const Faq = () => {
@@ -12,7 +13,7 @@ const Faq = () => {
                     Try AI— Your Personal <br />
                     Health Coach!
                 </p>
-                <button className="btn btn-outline btn-warning rounded-xl mt-4">Talk To AI Coach</button>
+                <Link to="/dashboard/ai-coach" className="btn btn-outline btn-warning rounded-xl mt-4">Talk To AI Coach</Link>
             </div>
         </div>
     );

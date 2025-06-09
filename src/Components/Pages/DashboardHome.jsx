@@ -79,19 +79,23 @@ console.log("Token:", localStorage.getItem("access-token"));
         {/* Replaced with new summary component */}
   <WorkoutSummary />
 
-        {/* AI Coach */}
+      
+
+        {/* Bar Chart */}
+        <div className="bg-gradient-to-r from-cyan-500 to-blue-500 p-6 rounded-xl shadow-lg">
+          <h2 className="text-xl font-semibold mb-4">Weekly Progress</h2>
+          <ProgressBarChart />
+        </div>
+
+
+
+          {/* AI Coach */}
         <div className="bg-gradient-to-r from-cyan-500 to-blue-500 p-6 rounded-xl shadow-lg flex flex-col items-center justify-center">
           <FaRobot size={54} className="text-pink-500 mb-3" />
           <h2 className="text-xl font-semibold mb-2">Talk to AI Coach</h2>
           <Link  to="/dashboard/ai-coach" className="bg-gradient-to-r btn btn-neutral from-pink-500 to-pink-700 hover:from-pink-600 hover:to-pink-800 px-6 py-2 rounded-lg  border-0 font-semibold">
             Chat Now
           </Link>
-        </div>
-
-        {/* Bar Chart */}
-        <div className="bg-gradient-to-r from-cyan-500 to-blue-500 p-6 rounded-xl shadow-lg">
-          <h2 className="text-xl font-semibold mb-4">Weekly Progress</h2>
-          <ProgressBarChart />
         </div>
       </div>
 

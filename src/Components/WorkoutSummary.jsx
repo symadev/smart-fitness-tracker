@@ -1,73 +1,65 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-// Progress bar component
-const HorizontalProgress = ({ value }) => (
-  <div className="w-full h-4 bg-gray-700 rounded-full overflow-hidden mt-2">
-    <div
-      className="h-full bg-pink-500 transition-all duration-300"
-      style={{ width: `${value}%` }}
-    ></div>
-  </div>
-);
-
 const WorkoutSummary = () => {
-  const [summary, setSummary] = useState({});
-  const [progress, setProgress] = useState(0);
+  const [summary, setSummary] = useState([]);
 
   useEffect(() => {
-    const fetchSummary = async () => {
+    const fetchWorkoutSummary = async () => {
       const token = localStorage.getItem("access-token");
-      const email = localStorage.getItem("user-email");
+      const userEmail = localStorage.getItem("user-email");
 
       try {
-        const res = await axios.get(`http://localhost:5000/workouts/${email}`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
+        const res = await axios.get("http://localhost:5000/workouts", {
+          headers: { Authorization: `Bearer ${token}` },
+          params: { email: userEmail },
         });
 
-        const allWorkouts = res.data;
+        const workouts = res.data;
+        const totals = {};
 
-        //  Filter to match both 'email' and 'userEmail'
-        const workouts = allWorkouts.filter(
-          (w) => w.email === email || w.userEmail === email
-        );
+        workouts.forEach((log) => {
+          const type = log.workoutType;
+          const duration = parseInt(log.duration) || 0;
+          if (!totals[type]) totals[type] = 0;
+          totals[type] += duration;
+        });
 
-        const typeCounts = workouts.reduce((acc, workout) => {
-          const type = workout.workoutType;
-          acc[type] = (acc[type] || 0) + 1;
-          return acc;
-        }, {});
+        const totalDuration = Object.values(totals).reduce((sum, val) => sum + val, 0);
 
-        const total = workouts.length;
-        const percentages = {};
-        for (const [type, count] of Object.entries(typeCounts)) {
-          percentages[type] = ((count / total) * 100).toFixed(1);
-        }
+        const summaryData = Object.entries(totals).map(([type, duration]) => ({
+          type,
+          percent: totalDuration ? ((duration / totalDuration) * 100).toFixed(1) : 0,
+        }));
 
-        setSummary(percentages);
-        setProgress((total / 10) * 100); // Optional logic
-      } catch (err) {
-        console.error("Failed to fetch workout summary", err);
+        setSummary(summaryData);
+      } catch (error) {
+        console.error("Failed to fetch workout summary:", error);
       }
     };
 
-    fetchSummary();
+    fetchWorkoutSummary();
   }, []);
 
   return (
-    <div className="bg-gradient-to-r from-cyan-500 to-blue-600 p-6 rounded-xl shadow-lg text-white mb-8">
-      <h2 className="text-xl font-semibold mb-4">Workout Summary</h2>
-      <ul className="space-y-2">
-        {Object.entries(summary).map(([type, percent]) => (
-          <li key={type} className="flex justify-between">
-            <span>{type}</span>
-            <span>{percent}%</span>
-          </li>
+    <div className="w-full max-w-md bg-gradient-to-r from-cyan-500 to-blue-600 text-white rounded-xl shadow-lg p-6">
+      <h2 className="text-2xl font-bold mb-4">Workout Summary</h2>
+      <div className="space-y-4">
+        {summary.map((item) => (
+          <div key={item.type}>
+            <div className="flex justify-between text-sm font-medium mb-1">
+              <span>{item.type}</span>
+              <span>{item.percent}%</span>
+            </div>
+            <div className="w-full bg-gray-300 h-3 rounded-full overflow-hidden">
+              <div
+                className="h-full bg-pink-500"
+                style={{ width: `${item.percent}%` }}
+              ></div>
+            </div>
+          </div>
         ))}
-      </ul>
-      <HorizontalProgress value={progress} />
+      </div>
     </div>
   );
 };
