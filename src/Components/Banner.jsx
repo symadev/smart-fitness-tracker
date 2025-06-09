@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import img1 from "../assets/images/1.jpg";
 
 const Banner = () => {
@@ -24,7 +25,7 @@ const Banner = () => {
           <br />
           Regular exercise not only boosts physical strength but also sharpens your mind and uplifts your mood.
         </p>
-        <button className="btn btn-outline btn-warning rounded-xl">About Us</button>
+        <Link to='/AboutUs' className="btn btn-outline btn-warning rounded-xl">About Us</Link>
       </div>
     </div>
   );

@@ -23,8 +23,14 @@ const Navbar = () => {
 
       {/* Desktop menu */}
       <ul className="hidden md:flex gap-6 items-center text-yellow-400">
+         <li>
+          <Link to="/" className="hover:text-yellow-300 text-[16px] cursor-pointer">
+            Home
+          </Link>
+        </li>
         <li>
           <div className="flex items-center gap-4">
+
             {user ? (
               <>
                 
@@ -65,6 +71,7 @@ const Navbar = () => {
         </option>
         {user ? (
           <>
+           
             <option value="/dashboard">Dashboard</option>
             <option value="#" onClick={handleLogout}>Logout</option>
           </>

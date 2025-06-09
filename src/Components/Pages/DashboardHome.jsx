@@ -1,15 +1,11 @@
-
 import ProgressBarChart from "../../Components/ProgressBarChart";
 import { FaRobot } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import WorkoutSummary from "../WorkoutSummary";
 import { Link } from "react-router-dom";
+import roboImg from "../../assets/images/ai-technology-robot-cute-design.png";
 
-
-
-
-// Optional: Create this component if you still want a simple progress bar
 const HorizontalProgress = ({ value }) => (
   <div className="w-full h-4 bg-gray-700 rounded-full overflow-hidden mt-2">
     <div
@@ -20,22 +16,17 @@ const HorizontalProgress = ({ value }) => (
 );
 
 const DashboardHome = () => {
+  // For summary section
+  const [summary, setSummary] = useState({});
+  const [progress, setProgress] = useState(0);
 
-  //for summery section
-const [summary, setSummary] = useState({});
-const [progress, setProgress] = useState(0);
+  // State for workout logs
+  const [workoutLogs, setWorkoutLogs] = useState([]);
 
-
-
-  //for summery parcentage section
   useEffect(() => {
     const fetchSummary = async () => {
       const token = localStorage.getItem("access-token");
       const email = localStorage.getItem("user-email");
-
-      console.log("Email:", localStorage.getItem("user-email"));
-console.log("Token:", localStorage.getItem("access-token"));
-
 
       try {
         const res = await axios.get(`http://localhost:5000/workouts/${email}`, {
@@ -46,6 +37,10 @@ console.log("Token:", localStorage.getItem("access-token"));
 
         const workouts = res.data;
 
+        // Store full workouts data for the table
+        setWorkoutLogs(workouts);
+
+        // Calculate summary percentages
         const typeCounts = workouts.reduce((acc, workout) => {
           const type = workout.workoutType;
           acc[type] = (acc[type] || 0) + 1;
@@ -59,7 +54,7 @@ console.log("Token:", localStorage.getItem("access-token"));
         }
 
         setSummary(percentages);
-        setProgress((total / 10) * 100); // Adjust this logic as needed
+        setProgress((total / 10) * 100); // Adjust as needed
       } catch (err) {
         console.error("Failed to fetch workout summary", err);
       }
@@ -68,18 +63,13 @@ console.log("Token:", localStorage.getItem("access-token"));
     fetchSummary();
   }, []);
 
-
-
   return (
     <div className="min-h-screen bg-[#0f1f60] text-white p-6">
       <h1 className="text-cyan-300 text-4xl font-bold mb-6 text-center">Fitness Dashboard</h1>
 
       {/* Top Section */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-        {/* Replaced with new summary component */}
-  <WorkoutSummary />
-
-      
+        <WorkoutSummary />
 
         {/* Bar Chart */}
         <div className="bg-gradient-to-r from-cyan-500 to-blue-500 p-6 rounded-xl shadow-lg">
@@ -87,13 +77,15 @@ console.log("Token:", localStorage.getItem("access-token"));
           <ProgressBarChart />
         </div>
 
-
-
-          {/* AI Coach */}
+        {/* AI Coach */}
         <div className="bg-gradient-to-r from-cyan-500 to-blue-500 p-6 rounded-xl shadow-lg flex flex-col items-center justify-center">
-          <FaRobot size={54} className="text-pink-500 mb-3" />
+          {/* <FaRobot size={54} className="text-pink-500 mb-3" /> */}
+          <img src={roboImg} className="w-48" alt="AI Robot" />
           <h2 className="text-xl font-semibold mb-2">Talk to AI Coach</h2>
-          <Link  to="/dashboard/ai-coach" className="bg-gradient-to-r btn btn-neutral from-pink-500 to-pink-700 hover:from-pink-600 hover:to-pink-800 px-6 py-2 rounded-lg  border-0 font-semibold">
+          <Link
+            to="/dashboard/ai-coach"
+            className="bg-gradient-to-r btn btn-neutral from-pink-500 to-pink-700 hover:from-pink-600 hover:to-pink-800 px-6 py-2 rounded-lg border-0 font-semibold"
+          >
             Chat Now
           </Link>
         </div>
@@ -107,25 +99,32 @@ console.log("Token:", localStorage.getItem("access-token"));
             <tr className="text-white">
               <th>Date</th>
               <th>Exercise</th>
-              <th>Sets</th>
+              
               <th>Reps</th>
               <th>Dur</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>April 24, 2024</td>
-              <td>Rench Press</td>
-              <td>3</td>
-              <td>10</td>
-              <td>30</td>
-            </tr>
-            {/* Add dynamic rows later */}
+            {workoutLogs.length === 0 ? (
+              <tr>
+                <td colSpan="5" className="text-center text-gray-300 py-4">
+                  No workout logs found.
+                </td>
+              </tr>
+            ) : (
+              workoutLogs.map((workout) => (
+                <tr key={workout._id}>
+                  <td>{new Date(workout.date).toLocaleDateString()}</td>
+                  <td>{workout.workoutType}</td>
+                
+                  <td>{workout.reps}</td>
+                  <td>{workout.duration}</td>
+                </tr>
+              ))
+            )}
           </tbody>
         </table>
       </div>
-
-
     </div>
   );
 };

@@ -12,6 +12,7 @@ import DashboardHome from "./Pages/DashboardHome";
 import WorkoutLogs from "./Pages/WorkoutLogs";
 import AiCoach from "./Pages/AiCoach";
 import Settings from "./Pages/Settings";
+import AboutUs from "./AboutUs";
 
 
 const router = createBrowserRouter([
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
       {
         path: "/",
         element:<Home></Home>,
+      },
+      {
+        path: "AboutUs",
+        element:<AboutUs></AboutUs>,
       },
       {
         path: "login",
