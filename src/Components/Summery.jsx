@@ -5,7 +5,7 @@ const Summery = () => {
     <div className="bg-[#0f1f60] min-h-[500px] flex flex-col lg:flex-row items-center justify-between px-8 py-16 gap-10 text-white">
       
       {/* Text Section */}
-      <div className="max-w-xl space-y-4 text-left">
+      <div className="max-w-xl space-y-4 p-4 text-left">
         <h2 className="text-3xl font-semibold text-white">
           Smarter Fitness, Personalized for You
         </h2>

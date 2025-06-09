@@ -1,5 +1,7 @@
 
 import img1  from "../assets/images/Health-Coaching-Services-Downtown-Austin-TX-scaled.jpg"
+import CardSecond from "./CardSecond";
+import Motivation from "./Motivation";
 import Summery from "./Summery";
 
 const AboutUs = () => {
@@ -29,6 +31,18 @@ const AboutUs = () => {
     </div>
 
     <Summery></Summery>
+
+    {/* cardSecond section */}
+    <div>
+      <CardSecond></CardSecond>
+
+    </div>
+
+       {/* motivation section */}
+    <div>
+      <Motivation></Motivation>
+
+    </div>
     </div>
     );
 };

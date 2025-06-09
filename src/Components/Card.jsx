@@ -43,7 +43,7 @@ const Card = () => {
     {cardData.map((card, index) => (
       <motion.div
         key={index}
-        className="card bg-[#0f1f60] w-72 md:w-64 shadow-xl m-4 rounded-xl"
+        className="card bg-[#0f1f60] w-40 h-24 mx-auto mb-4"
         initial={{ opacity: 0, y: 50, scale: 0.95 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
         whileHover={{ scale: 1.05 }}
