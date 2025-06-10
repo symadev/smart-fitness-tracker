@@ -13,6 +13,7 @@ import WorkoutLogs from "./Pages/WorkoutLogs";
 import AiCoach from "./Pages/AiCoach";
 import Settings from "./Pages/Settings";
 import AboutUs from "./AboutUs";
+import Users from "./Pages/Users";
 
 
 const router = createBrowserRouter([
@@ -48,6 +49,10 @@ const router = createBrowserRouter([
     {
       path: "home",
       element: <DashboardHome />,
+    },
+    {
+      path: "user",
+      element:<Users></Users>
     },
     {
       path: "workouts",

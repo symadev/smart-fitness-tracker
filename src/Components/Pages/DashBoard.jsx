@@ -35,6 +35,9 @@ const Dashboard = () => {
           <li>
             <SidebarLink to="/dashboard/settings" icon={<FaCog />} text="Settings" />
           </li>
+          <li>
+            <SidebarLink to="/dashboard/user" icon={<FaCog />} text="Manage User" />
+          </li>
           <div className="divider before:bg-blue-400 after:bg-blue-400"></div>
 
           <li>

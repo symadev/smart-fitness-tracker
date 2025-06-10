@@ -1,15 +1,68 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
+import Swal from "sweetalert2";
 
 const Settings = () => {
-  const [themeEnabled, setThemeEnabled] = useState(true);
-  const [notificationsEnabled, setNotificationsEnabled] = useState(true);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
 
+  // Fetch current user info when component mounts
+ useEffect(() => {
+  const token = localStorage.getItem("access-token");
+  if (!token) {
+    Swal.fire("Not logged in", "Please login to continue.", "error");
+    return;
+  }
+
+ 
+     axios.get("http://localhost:5000/api/user/profile",
+ {
+      headers: { Authorization: `Bearer ${token}` },
+    })
+    .then((res) => {
+      setName(res.data.name);
+      setEmail(res.data.email);
+    })
+    .catch((err) => {
+      console.error("Error loading user:", err);
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Failed to load user info.",
+      });
+    });
+}, []);
+
   const handleSave = (e) => {
     e.preventDefault();
-    // Save logic here
-    console.log("Saved:", { name, email, themeEnabled, notificationsEnabled });
+    const token = localStorage.getItem("access-token");
+
+    axios
+      .patch(
+        "http://localhost:5000/user/update",
+        { name, email },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
+      .then(() => {
+        Swal.fire({
+          icon: "success",
+          title: "Profile updated!",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      })
+      .catch((err) => {
+        console.error("Error updating profile:", err);
+        Swal.fire({
+          icon: "error",
+          title: "Update failed",
+          text: "Could not update profile. Please try again.",
+        });
+      });
   };
 
   return (
@@ -18,34 +71,6 @@ const Settings = () => {
         <h2 className="text-2xl font-bold flex items-center gap-2 mb-6">
           <span className="text-blue-400">⚙️</span> SETTINGS
         </h2>
-
-        <div className="border-t border-b border-gray-600 py-4 space-y-4">
-          <div className="flex items-center justify-between">
-            <span className="font-medium">Theme</span>
-            <label className="inline-flex items-center cursor-pointer">
-              <input
-                type="checkbox"
-                className="sr-only peer"
-                checked={themeEnabled}
-                onChange={() => setThemeEnabled(!themeEnabled)}
-              />
-              <div className="w-11 h-6 bg-gray-300 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-blue-900 rounded-full peer dark:bg-white peer-checked:bg-blue-900 transition-all"></div>
-            </label>
-          </div>
-
-          <div className="flex items-center justify-between">
-            <span className="font-medium">Notifications</span>
-            <label className="inline-flex items-center cursor-pointer">
-              <input
-                type="checkbox"
-                className="sr-only peer"
-                checked={notificationsEnabled}
-                onChange={() => setNotificationsEnabled(!notificationsEnabled)}
-              />
-              <div className="w-11 h-6 bg-gray-300 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-blue-900 rounded-full peer dark:bg-white peer-checked:bg-blue-900 transition-all"></div>
-            </label>
-          </div>
-        </div>
 
         <div className="mt-6">
           <h3 className="text-lg font-semibold mb-4">Update Profile</h3>
