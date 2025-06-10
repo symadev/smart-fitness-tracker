@@ -78,10 +78,17 @@ const Register = () => {
             <label className="block mb-1 text-sm">Password</label>
             <input
               type="password"
-              {...register("password", { required: "Password is required" })}
+              {...register("password", {
+                required: "Password is required",
+                minLength: {
+                  value: 6,
+                  message: "Password must be at least 6 characters",
+                },
+              })}
               className="w-full px-4 py-2 rounded-md bg-[#2c2c54] text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-pink-500"
               placeholder="••••••••"
             />
+
             {errors.password && <p className="text-pink-400 text-sm mt-1">{errors.password.message}</p>}
           </div>
 
