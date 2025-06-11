@@ -15,7 +15,7 @@ const Settings = () => {
   }
 
  
-     axios.get("http://localhost:5000/api/user/profile",
+     axios.get("http://localhost:5000/user/profile",
  {
       headers: { Authorization: `Bearer ${token}` },
     })
@@ -34,36 +34,31 @@ const Settings = () => {
 }, []);
 
   const handleSave = (e) => {
-    e.preventDefault();
-    const token = localStorage.getItem("access-token");
+  e.preventDefault();
+  const token = localStorage.getItem("access-token");
 
-    axios
-      .patch(
-        "http://localhost:5000/user/update",
-        { name, email },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      )
-      .then(() => {
-        Swal.fire({
-          icon: "success",
-          title: "Profile updated!",
-          showConfirmButton: false,
-          timer: 1500,
-        });
-      })
-      .catch((err) => {
-        console.error("Error updating profile:", err);
-        Swal.fire({
-          icon: "error",
-          title: "Update failed",
-          text: "Could not update profile. Please try again.",
-        });
+  axios
+    .patch("http://localhost:5000/user/update", { name, email }, {
+      headers: { Authorization: `Bearer ${token}` },
+    })
+    .then(() => {
+      Swal.fire({
+        icon: "success",
+        title: "Profile updated!",
+        showConfirmButton: false,
+        timer: 1500,
       });
-  };
+    })
+    .catch((err) => {
+      console.error("Error updating profile:", err);
+      Swal.fire({
+        icon: "error",
+        title: "Update failed",
+        text: "Could not update profile. Please try again.",
+      });
+    });
+};
+
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-[#0f1f60] px-4">
