@@ -1,71 +1,91 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 const Users = () => {
   const [users, setUsers] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const token = localStorage.getItem("access-token");
 
-  // Fetch users from the backend
   useEffect(() => {
-    axios.get("/api/user")
-      .then((res) => {
-        console.log("Fetched users:", res.data);
-        setUsers(res.data); // Assuming backend returns an array
+    axios
+      .get("http://localhost:5000/user", {
+        headers: { Authorization: `Bearer ${token}` },
       })
-      .catch((err) => console.error("Error fetching users:", err));
-  }, []);
+      .then((res) => {
+        setUsers(res.data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error("Error loading users:", err.response?.data || err);
+        Swal.fire("Error", "Could not load users", "error");
+        setLoading(false);
+      });
+  }, [token]);
 
-  // Handle role update
-  const handleRoleChange = (userId, newRole) => {
-    axios.patch(`/api/user/${userId}/role`, { role: newRole })
+  const handleRoleChange = (id, newRole) => {
+    axios
+      .patch(
+        `http://localhost:5000/user/${id}/role`,
+        { role: newRole },
+        { headers: { Authorization: `Bearer ${token}` } }
+      )
       .then(() => {
+        Swal.fire("Success", "Role updated", "success");
         setUsers((prevUsers) =>
           prevUsers.map((user) =>
-            user._id === userId ? { ...user, role: newRole } : user
+            user._id === id ? { ...user, role: newRole } : user
           )
         );
       })
-      .catch((err) => console.error("Error updating role:", err));
+      .catch((err) => {
+        console.error("Role update failed:", err.response?.data || err);
+        Swal.fire("Error", "Could not update role", "error");
+      });
   };
 
   return (
-    <div className="min-h-screen bg-[#0f1f60] text-white p-6">
-      <h2 className="text-2xl font-bold mb-4">Manage Users</h2>
-      <div className="bg-gradient-to-r from-cyan-500 to-blue-600 rounded-xl shadow-lg p-4 overflow-x-auto">
-        <table className="w-full text-left">
-          <thead>
-            <tr>
-              <th className="p-2">Name</th>
-              <th className="p-2">Email</th>
-              <th className="p-2">Role</th>
-              <th className="p-2">Change Role</th>
-            </tr>
-          </thead>
-          <tbody>
-            {Array.isArray(users) && users.length > 0 ? (
-              users.map((user) => (
-                <tr key={user._id} className="border-t border-white/20">
-                  <td className="p-2">{user.name || "N/A"}</td>
-                  <td className="p-2">{user.email}</td>
-                  <td className="p-2 capitalize">{user.role || "user"}</td>
-                  <td className="p-2">
+    <div className="min-h-screen bg-gray-100 p-4">
+      <div className="max-w-4xl mx-auto bg-white shadow rounded-lg p-6">
+        <h2 className="text-2xl font-bold mb-4">👥 Manage Users</h2>
+
+        {loading ? (
+          <p className="text-center text-gray-500">Loading users...</p>
+        ) : users.length === 0 ? (
+          <p className="text-center text-gray-500">No users found.</p>
+        ) : (
+          <table className="w-full table-auto">
+            <thead>
+              <tr className="bg-gray-200">
+                <th className="px-4 py-2 text-left">Name</th>
+                <th className="px-4 py-2 text-left">Email</th>
+                <th className="px-4 py-2 text-left">Role</th>
+                <th className="px-4 py-2 text-left">Change Role</th>
+              </tr>
+            </thead>
+            <tbody>
+              {users.map((user) => (
+                <tr key={user._id} className="border-t">
+                  <td className="px-4 py-2">{user.name}</td>
+                  <td className="px-4 py-2">{user.email}</td>
+                  <td className="px-4 py-2 capitalize">{user.role}</td>
+                  <td className="px-4 py-2">
                     <select
-                      value={user.role || "user"}
-                      onChange={(e) => handleRoleChange(user._id, e.target.value)}
-                      className="rounded-md bg-white text-black px-2 py-1"
+                      value={user.role}
+                      onChange={(e) =>
+                        handleRoleChange(user._id, e.target.value)
+                      }
+                      className="px-2 py-1 border rounded"
                     >
                       <option value="user">User</option>
                       <option value="admin">Admin</option>
                     </select>
                   </td>
                 </tr>
-              ))
-            ) : (
-              <tr>
-                <td colSpan="4" className="text-center py-4">No users found.</td>
-              </tr>
-            )}
-          </tbody>
-        </table>
+              ))}
+            </tbody>
+          </table>
+        )}
       </div>
     </div>
   );

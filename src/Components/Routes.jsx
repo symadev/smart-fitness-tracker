@@ -11,7 +11,7 @@ import DashBoard from "./Pages/DashBoard";
 import DashboardHome from "./Pages/DashboardHome";
 import WorkoutLogs from "./Pages/WorkoutLogs";
 import AiCoach from "./Pages/AiCoach";
-import Settings from "./Pages/Settings";
+
 import AboutUs from "./AboutUs";
 import Users from "./Pages/Users";
 
@@ -52,7 +52,7 @@ const router = createBrowserRouter([
     },
     {
       path: "user",
-      element:<Users></Users>
+      element:<Users></Users>,
     },
     {
       path: "workouts",
@@ -62,10 +62,7 @@ const router = createBrowserRouter([
       path: "ai-coach",
       element: <AiCoach/>,
     },
-    {
-      path: "settings",
-      element: <Settings />,
-    },
+   
   ],
        },
     ],
