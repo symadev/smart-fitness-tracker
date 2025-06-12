@@ -46,26 +46,30 @@ const Users = () => {
 
   return (
     <div className="min-h-screen bg-gray-100 p-4">
-      <div className="max-w-4xl mx-auto bg-white shadow rounded-lg p-6">
-        <h2 className="text-2xl font-bold mb-4">👥 Manage Users</h2>
+      {/* Styled Gradient Container */}
+      <div className="bg-gradient-to-r from-blue-400 to-indigo-700 p-6 rounded-xl shadow-lg max-w-5xl mx-auto overflow-x-auto">
+        <h2 className="text-xl font-semibold text-white mb-4">👥 Manage Users</h2>
 
         {loading ? (
-          <p className="text-center text-gray-500">Loading users...</p>
+          <p className="text-center text-white">Loading users...</p>
         ) : users.length === 0 ? (
-          <p className="text-center text-gray-500">No users found.</p>
+          <p className="text-center text-white">No users found.</p>
         ) : (
-          <table className="w-full table-auto">
+          <table className="w-full text-left border-separate border-spacing-y-2">
             <thead>
-              <tr className="bg-gray-200">
-                <th className="px-4 py-2 text-left">Name</th>
-                <th className="px-4 py-2 text-left">Email</th>
-                <th className="px-4 py-2 text-left">Role</th>
-                <th className="px-4 py-2 text-left">Change Role</th>
+              <tr className="text-white text-sm md:text-base">
+                <th className="px-4 py-2">Name</th>
+                <th className="px-4 py-2">Email</th>
+                <th className="px-4 py-2">Role</th>
+                <th className="px-4 py-2">Change Role</th>
               </tr>
             </thead>
             <tbody>
               {users.map((user) => (
-                <tr key={user._id} className="border-t">
+                <tr
+                  key={user._id}
+                  className="bg-white bg-opacity-10 hover:bg-opacity-20 text-white transition"
+                >
                   <td className="px-4 py-2">{user.name}</td>
                   <td className="px-4 py-2">{user.email}</td>
                   <td className="px-4 py-2 capitalize">{user.role}</td>
@@ -75,7 +79,7 @@ const Users = () => {
                       onChange={(e) =>
                         handleRoleChange(user._id, e.target.value)
                       }
-                      className="px-2 py-1 border rounded"
+                      className="px-3 py-1 bg-white bg-opacity-80 text-black rounded"
                     >
                       <option value="user">User</option>
                       <option value="admin">Admin</option>

@@ -16,7 +16,7 @@ const DashboardHome = () => {
       const email = localStorage.getItem("user-email");
 
       try {
-        const res = await axios.get(`http://localhost:5000/workouts/${email}`, {
+        const res = await axios.get(`http://localhost:5000/workouts`, {
           headers: { Authorization: `Bearer ${token}` },
         });
 
@@ -61,15 +61,17 @@ const DashboardHome = () => {
 
         {/* AI Coach */}
         <div className="bg-gradient-to-r from-cyan-500 to-blue-500 p-6 rounded-xl shadow-lg flex flex-col items-center justify-center text-center">
-          <img src={roboImg} className="w-24 mb-3" alt="AI Coach" />
-          <h2 className="text-xl font-semibold mb-2">Talk to AI Coach</h2>
+          <img src={roboImg} className="w-24 mb-3 animate-bounce" alt="AI Coach" />
+          <h2 className="text-xl font-semibold mb-2 text-white">Talk to AI Coach</h2>
           <Link
             to="/dashboard/ai-coach"
-            className="bg-gradient-to-r from-pink-500 to-pink-700 hover:from-pink-600 hover:to-pink-800 px-6 py-2 rounded-lg font-semibold shadow-md transition"
+            className="bg-gradient-to-r from-pink-500 to-pink-700 text-white px-6 py-2 rounded-full font-semibold shadow-md
+      transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:from-pink-600 hover:to-pink-800"
           >
             Chat Now
           </Link>
         </div>
+
       </div>
 
       {/* Workout Log Table */}

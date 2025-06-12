@@ -26,7 +26,7 @@ const ProgressBarChart = () => {
       const email = localStorage.getItem("user-email");
 
       try {
-        const res = await axios.get(`http://localhost:5000/workouts/${email}`, {
+        const res = await axios.get(`http://localhost:5000/workouts`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
