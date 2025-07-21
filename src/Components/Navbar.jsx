@@ -20,7 +20,7 @@ const Navbar = () => {
   return (
     <nav className="relative">
       {/* Gradient background with glass effect */}
-      <div className="navbar bg-gradient-to-r from-[#0f1f60] via-[#1a2b7a] to-[#0f1f60] backdrop-blur-md bg-opacity-95 text-white px-6 py-3 sticky top-0 z-50 shadow-2xl border-b border-white/10">
+      <div className="navbar sticky  bg-gradient-to-r from-[#0f1f60] via-[#1a2b7a] to-[#0f1f60] backdrop-blur-md bg-opacity-95 text-white px-6 py-3  top-0 z-50 shadow-2xl border-b border-white/10">
         
         {/* Logo section with glow effect */}
         <div className="flex items-center gap-3 flex-1">

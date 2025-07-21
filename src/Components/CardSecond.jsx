@@ -25,37 +25,44 @@ const CardSecond = () => {
   ];
 
   return (
-    <div className="min-h-[500px] bg-[#0f1f60] py-16 px-6 flex flex-col items-center">
+    <section className="bg-[#0f1f60] py-20 px-6 text-white overflow-hidden">
       {/* Section Title */}
-      <div className="text-center mb-12 max-w-2xl">
-        <h2 className="text-4xl font-bold text-white">Why SmartFit!</h2>
+      <div className="text-center mb-14">
+        <h2 className="text-4xl font-bold mb-3 text-yellow-400 via-yellow-200 ">Why SmartFit!</h2>
+        <p className="text-gray-300 max-w-xl mx-auto text-lg">
+          Discover the smart advantages that make your fitness journey efficient, engaging, and personalized.
+        </p>
       </div>
 
-      {/* Cards Container */}
-      <div className="flex flex-wrap justify-center gap-8">
+      {/* Cards Grid */}
+      <div className="flex flex-wrap justify-center gap-10">
         {cardData.map((card, index) => (
           <motion.div
             key={index}
-            className="bg-[#162a80] w-72 md:w-64 rounded-xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300"
-            initial={{ opacity: 0, y: 50, scale: 0.95 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
+            className="relative bg-[#162a80] w-72 md:w-64 rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 group overflow-hidden"
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.8, ease: "easeOut", delay: card.delay }}
           >
-            <div className="flex justify-center mb-4">
-              <img
-                src={card.image}
-                alt="Feature"
-                className="w-20 h-20 object-contain"
-              />
+            {/* Glow Border */}
+            <div className="absolute inset-0 bg-gradient-to-r from-yellow-400 via-blue-400 to-purple-600 opacity-20 rounded-2xl blur-xl group-hover:opacity-40 transition-opacity duration-500 z-0" />
+            <div className="relative z-10">
+              <div className="flex justify-center mb-5">
+                <img
+                  src={card.image}
+                  alt="Feature"
+                  className="w-20 h-20 object-contain drop-shadow-md"
+                />
+              </div>
+              <h3 className="text-center text-white text-base font-semibold leading-snug">
+                {card.title}
+              </h3>
             </div>
-            <h3 className="text-white text-center text-base font-medium leading-snug">
-              {card.title}
-            </h3>
           </motion.div>
         ))}
       </div>
-    </div>
+    </section>
   );
 };
 
