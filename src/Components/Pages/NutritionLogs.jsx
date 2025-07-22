@@ -41,7 +41,9 @@ const NutritionLogs = () => {
         icon: "success",
         title: "Nutrition Saved!",
         text: "Your nutrition log has been saved successfully.",
-        confirmButtonColor: "#1e40af",
+        background: "#1e293b",
+        color: "#f1f5f9",
+        confirmButtonColor: "#10b981",
       });
 
       setFormData({
@@ -60,117 +62,119 @@ const NutritionLogs = () => {
         icon: "error",
         title: "Save Failed",
         text: "There was an error saving your nutrition. Please try again.",
-        confirmButtonColor: "#d33",
+        background: "#1e293b",
+        color: "#f1f5f9",
+        confirmButtonColor: "#ef4444"
       });
     }
   };
 
   return (
-  
-     <div className="w-full max-w-md bg-gradient-to-br from-green-500 to-teal-600 text-white rounded-xl shadow-lg p-6 mx-auto">
-  <h2 className="text-2xl font-bold text-center mb-4">Log Nutrition</h2>
 
-  <form onSubmit={handleSubmit} className="space-y-4">
-    <input
-      type="text"
-      name="mealName"
-      value={formData.mealName}
-      onChange={handleChange}
-      placeholder="Meal Name"
-      className="w-full px-3 py-2 rounded-md bg-green-400 text-white placeholder-white focus:ring-2 focus:ring-yellow-300"
-      required
-    />
+    <div className="w-full max-w-md bg-gradient-to-br from-green-500 to-teal-600 text-white rounded-xl shadow-lg p-6 mx-auto">
+      <h2 className="text-2xl font-bold text-center mb-4">Log Nutrition</h2>
 
-    {/* Calories & Protein */}
-    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-      <input
-        type="number"
-        name="calories"
-        value={formData.calories}
-        onChange={handleChange}
-        placeholder="Calories"
-        className="px-3 py-2 rounded-md bg-green-400 text-white placeholder-white"
-        required
-      />
-      <input
-        type="number"
-        name="protein"
-        value={formData.protein}
-        onChange={handleChange}
-        placeholder="Protein (g)"
-        className="px-3 py-2 rounded-md bg-green-400 text-white placeholder-white"
-        required
-      />
+      <form onSubmit={handleSubmit} className="space-y-4">
+        <input
+          type="text"
+          name="mealName"
+          value={formData.mealName}
+          onChange={handleChange}
+          placeholder="Meal Name"
+          className="w-full px-3 py-2 rounded-md bg-green-400 text-white placeholder-white focus:ring-2 focus:ring-yellow-300"
+          required
+        />
+
+        {/* Calories & Protein */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <input
+            type="number"
+            name="calories"
+            value={formData.calories}
+            onChange={handleChange}
+            placeholder="Calories"
+            className="px-3 py-2 rounded-md bg-green-400 text-white placeholder-white"
+            required
+          />
+          <input
+            type="number"
+            name="protein"
+            value={formData.protein}
+            onChange={handleChange}
+            placeholder="Protein (g)"
+            className="px-3 py-2 rounded-md bg-green-400 text-white placeholder-white"
+            required
+          />
+        </div>
+
+        {/* Carbs & Fat */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <input
+            type="number"
+            name="carbs"
+            value={formData.carbs}
+            onChange={handleChange}
+            placeholder="Carbs (g)"
+            className="px-3 py-2 rounded-md bg-green-400 text-white placeholder-white"
+            required
+          />
+          <input
+            type="number"
+            name="fat"
+            value={formData.fat}
+            onChange={handleChange}
+            placeholder="Fat (g)"
+            className="px-3 py-2 rounded-md bg-green-400 text-white placeholder-white"
+            required
+          />
+        </div>
+
+        {/* Meal Type */}
+        <select
+          name="mealType"
+          value={formData.mealType}
+          onChange={handleChange}
+          className="w-full px-3 py-2 rounded-md bg-green-400 text-white"
+          required
+        >
+          <option value="">Select Meal Type</option>
+          <option value="Breakfast">Breakfast</option>
+          <option value="Lunch">Lunch</option>
+          <option value="Dinner">Dinner</option>
+          <option value="Snacks">Snacks</option>
+        </select>
+
+        {/* Date & Time */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <input
+            type="date"
+            name="date"
+            value={formData.date}
+            onChange={handleChange}
+            className="px-3 py-2 rounded-md bg-green-400 text-white"
+            required
+          />
+          <input
+            type="time"
+            name="time"
+            value={formData.time}
+            onChange={handleChange}
+            className="px-3 py-2 rounded-md bg-green-400 text-white"
+            required
+          />
+        </div>
+
+        {/* Submit */}
+        <button
+          type="submit"
+          className="w-full py-2 mt-2 rounded-md bg-gradient-to-r from-yellow-400 to-yellow-600 hover:from-yellow-500 hover:to-yellow-700 transition-all font-semibold text-white shadow-md"
+        >
+          Save Nutrition
+        </button>
+      </form>
     </div>
 
-    {/* Carbs & Fat */}
-    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-      <input
-        type="number"
-        name="carbs"
-        value={formData.carbs}
-        onChange={handleChange}
-        placeholder="Carbs (g)"
-        className="px-3 py-2 rounded-md bg-green-400 text-white placeholder-white"
-        required
-      />
-      <input
-        type="number"
-        name="fat"
-        value={formData.fat}
-        onChange={handleChange}
-        placeholder="Fat (g)"
-        className="px-3 py-2 rounded-md bg-green-400 text-white placeholder-white"
-        required
-      />
-    </div>
 
-    {/* Meal Type */}
-    <select
-      name="mealType"
-      value={formData.mealType}
-      onChange={handleChange}
-      className="w-full px-3 py-2 rounded-md bg-green-400 text-white"
-      required
-    >
-      <option value="">Select Meal Type</option>
-      <option value="Breakfast">Breakfast</option>
-      <option value="Lunch">Lunch</option>
-      <option value="Dinner">Dinner</option>
-      <option value="Snacks">Snacks</option>
-    </select>
-
-    {/* Date & Time */}
-    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-      <input
-        type="date"
-        name="date"
-        value={formData.date}
-        onChange={handleChange}
-        className="px-3 py-2 rounded-md bg-green-400 text-white"
-        required
-      />
-      <input
-        type="time"
-        name="time"
-        value={formData.time}
-        onChange={handleChange}
-        className="px-3 py-2 rounded-md bg-green-400 text-white"
-        required
-      />
-    </div>
-
-    {/* Submit */}
-    <button
-      type="submit"
-      className="w-full py-2 mt-2 rounded-md bg-gradient-to-r from-yellow-400 to-yellow-600 hover:from-yellow-500 hover:to-yellow-700 transition-all font-semibold text-white shadow-md"
-    >
-      Save Nutrition
-    </button>
-  </form>
-</div>
-
-   
   );
 };
 

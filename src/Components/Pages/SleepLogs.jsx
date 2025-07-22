@@ -41,7 +41,9 @@ const SleepLogs = () => {
         icon: "success",
         title: "Sleep Log Saved",
         text: "Your sleep record has been successfully saved!",
-        confirmButtonColor: "#1e40af",
+        background: "#1e293b",
+        color: "#f1f5f9",
+        confirmButtonColor: "#10b981",
       });
 
       setFormData({
@@ -57,7 +59,9 @@ const SleepLogs = () => {
         icon: "error",
         title: "Error",
         text: "Failed to save sleep log. Please try again.",
-        confirmButtonColor: "#d33",
+        background: "#1e293b",
+        color: "#f1f5f9",
+        confirmButtonColor: "#ef4444"
       });
     }
   };

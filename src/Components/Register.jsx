@@ -26,29 +26,40 @@ const Register = () => {
             Swal.fire({
               title: "Register Done",
               color: "#716add",
-              background: "#fff url(/images/trees.png)",
-              backdrop: `
-                rgba(0,0,123,0.4)
-                url("/images/nyan-cat.gif")
-                left top
-                no-repeat
-              `
+              background: "#1e293b",
+              color: "#f1f5f9",
+              confirmButtonColor: "#10b981",
+
             });
             navigate('/');
           })
           .catch(() => {
-            Swal.fire('Error', 'Failed to save user data', 'error');
+           Swal.fire({
+                     title: "Error!",
+                     text: "Registration Failed",
+                     icon: "error",
+                     background: "#1e293b",
+                     color: "#f1f5f9",
+                     confirmButtonColor: "#ef4444"
+                   });
           });
       })
       .catch(() => {
-        Swal.fire('Error', 'Something went wrong during registration', 'error');
+        Swal.fire({
+          title: "Error!",
+          text: "Something went wrong during registration",
+          icon: "error",
+          background: "#1e293b",
+          color: "#f1f5f9",
+          confirmButtonColor: "#ef4444"
+        });
       });
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[#0f1f60]">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-950 to-blue-900">
       <div className="bg-[#0e1c4b]  p-8 rounded-2xl shadow-lg w-full max-w-md text-white">
-        <h2 className="text-2xl font-bold text-center mb-6">
+        <h2 className="text-2xl font-bold text-center text-yellow-400 mb-6">
           SmartFit <span className="ml-1">🏋️‍♂️</span>
         </h2>
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
@@ -99,18 +110,7 @@ const Register = () => {
             Register
           </button>
 
-          <div className="divider text-gray-400 text-sm">Or sign up with</div>
-          <div className="flex justify-center space-x-4">
-            <button className="btn btn-circle bg-pink-500 text-white hover:bg-gray-800">
-              <FaFacebookF />
-            </button>
-            <button className="btn btn-circle bg-pink-500 text-white hover:bg-gray-800">
-              <FaGoogle />
-            </button>
-            <button className="btn btn-circle bg-pink-500 text-white hover:bg-gray-800">
-              <FaGithub />
-            </button>
-          </div>
+        
         </form>
         <p className="text-center text-sm mt-6 text-gray-400">
           Already have an account?

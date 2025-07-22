@@ -18,4 +18,4 @@ const PrivateRoute = ({ children }) => {
 
 export default PrivateRoute;
 
-// this privateroute only for the user
+

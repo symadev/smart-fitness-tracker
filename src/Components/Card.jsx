@@ -30,7 +30,7 @@ const Card = () => {
 
   return (
     <div className="min-h-screen bg-[#0f1f60]  py-16 px-6">
-   
+
 
       <div className="relative max-w-7xl mx-auto">
         {/* Section Title */}
@@ -52,7 +52,7 @@ const Card = () => {
             <div
               key={index}
               className="group relative hover:scale-105 hover:rotate-y-1 transition-all duration-300"
-              
+
             >
               <div className="relative h-80 rounded-2xl overflow-hidden shadow-2xl bg-gradient-to-br from-gray-900 to-gray-800 border border-purple-500/20">
                 {/* Image Container */}
@@ -74,7 +74,7 @@ const Card = () => {
                   </span>
                 </div>
 
-                
+
 
                 {/* Content */}
                 <div className="absolute bottom-0 left-0 right-0 p-6 z-10">
@@ -85,10 +85,10 @@ const Card = () => {
                   </div>
                 </div>
 
-              
+
               </div>
 
-             
+
             </div>
           ))}
         </div>

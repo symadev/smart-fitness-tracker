@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 const CardSecond = () => {
   const cardData = [
     {
-      title: "AI-Driven: Custom recommendations for workouts, rest, and nutrition",
+      title: "Personalized Workout Logs & Daily Tracking",
       image: "/src/assets/images/ai.png",
       delay: 0,
     },

@@ -2,7 +2,7 @@ import WorkoutSummary from "../WorkoutSummary";
 import ProgressTinyAreaChart from "../../Components/ProgressBarChart";
 import NutritionPieChart from "./NutritionPieChart";
 import SleepChart from "./SleepChart";
-import AIChatBox from "./AIChatBox";
+
 
 const DashboardHome = () => {
   return (
@@ -25,12 +25,6 @@ const DashboardHome = () => {
           </div>
         </div>
 
-        {/* AI Coach - larger width */}
-        <div className="md:basis-2/3 h-full">
-          <div className="h-full">
-            <AIChatBox />
-          </div>
-        </div>
       </div>
     </div>
   );

@@ -17,18 +17,34 @@ const Login = () => {
 
     signIn(email, password)
       .then(() => {
-        Swal.fire("Login Successful", "", "success");
+        Swal.fire({
+          title: "Success!",
+          text: "Login successfully",
+          icon: "success",
+          background: "#1e293b",
+          color: "#f1f5f9",
+          confirmButtonColor: "#10b981",
+          timer: 2000,
+          showConfirmButton: false
+        });
         navigate(from, { replace: true });
       })
       .catch((error) => {
-        Swal.fire("Login Failed", error.message, "error");
+        Swal.fire({
+          title: "Error!",
+          text: "Login Failed",
+          icon: "error",
+          background: "#1e293b",
+          color: "#f1f5f9",
+          confirmButtonColor: "#ef4444"
+        });
       });
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[#0f1f60]">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-950 to-blue-900">
       <div className="bg-[#0e1c4b] p-8 rounded-2xl shadow-lg w-full max-w-md">
-        <h2 className="text-2xl font-bold text-center text-white mb-8">
+        <h2 className="text-2xl font-bold text-center text-yellow-400 mb-8">
           Smartfit <span className="ml-1">🏋️‍♂️</span>
         </h2>
         <form onSubmit={handleLogin} className="space-y-6">

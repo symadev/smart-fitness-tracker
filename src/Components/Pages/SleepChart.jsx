@@ -68,7 +68,7 @@ const SleepChart = () => {
     if (activeIndex !== null && activeIndex !== index) {
       return "rgba(59, 130, 246, 0.3)";
     }
-    return duration < 7 ? "#f59e0b" : duration < 8 ? "#10b981" : "#3b82f6";
+    return duration < 7 ? "#f59e0b" : duration < 8 ? "#3b82f6": "#10b981" ;
   };
 
   const avgDuration = data.length
