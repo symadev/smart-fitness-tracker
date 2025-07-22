@@ -25,7 +25,7 @@ const SleepLogs = () => {
 
     try {
       await axios.post(
-        "http://localhost:5000/sleep",
+        "http://localhost:5000/sleeps",
         {
           ...formData,
           userEmail,

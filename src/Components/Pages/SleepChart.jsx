@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
 import {
   ResponsiveContainer,
   ComposedChart,
@@ -16,75 +17,65 @@ const SleepChart = () => {
   const [activeIndex, setActiveIndex] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
-  // Mock data generator
-  const generateMockData = () => {
-    const mockData = [];
-    const today = new Date();
-    
-    for (let i = 6; i >= 0; i--) {
-      const date = new Date(today);
-      date.setDate(date.getDate() - i);
-      
-      const duration = Math.random() * 3 + 6; // 6-9 hours
-      const quality = Math.random() * 3 + 7; // 7-10 quality
-      
-      mockData.push({
-        name: date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }),
-        duration: parseFloat(duration.toFixed(1)),
-        quality: parseFloat(quality.toFixed(1)),
-        dayOfWeek: date.toLocaleDateString('en-US', { weekday: 'short' })
-      });
-    }
-    return mockData;
-  };
-
   useEffect(() => {
-    const fetchSleepLogs = async () => {
+    const fetchSleepData = async () => {
       setIsLoading(true);
-      await new Promise(resolve => setTimeout(resolve, 800));
-      
+      const token = localStorage.getItem("access-token");
+
       try {
-        const mockLogs = generateMockData();
-        setData(mockLogs);
-      } catch (err) {
-        console.error("Failed to fetch sleep logs:", err);
+        const res = await axios.get("http://localhost:5000/sleeps", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        const formatted = res.data.map((entry) => {
+          const date = new Date(entry.date);
+          return {
+            name: date.toLocaleDateString("en-US", { month: "short", day: "numeric" }),
+            dayOfWeek: date.toLocaleDateString("en-US", { weekday: "short" }),
+            duration: parseFloat(entry.duration),
+            quality: parseFloat(entry.quality || 8.0), // fallback if quality not available
+          };
+        });
+
+        setData(formatted);
+      } catch (error) {
+        console.error("Failed to fetch sleep data:", error);
       } finally {
         setIsLoading(false);
       }
     };
 
-    fetchSleepLogs();
+    fetchSleepData();
   }, []);
 
-  // Custom tooltip
   const CustomTooltip = ({ active, payload, label }) => {
     if (active && payload && payload.length) {
-      const data = payload[0].payload;
+      const d = payload[0].payload;
       return (
         <div className="bg-gray-800 text-white p-3 rounded-lg shadow-lg border border-gray-600">
-          <p className="font-medium">{`${data.dayOfWeek}, ${label}`}</p>
-          <p className="text-blue-300 text-sm">{`Sleep: ${data.duration}h`}</p>
-          <p className="text-green-300 text-sm">{`Quality: ${data.quality}/10`}</p>
+          <p className="font-medium">{`${d.dayOfWeek}, ${label}`}</p>
+          <p className="text-blue-300 text-sm">{`Sleep: ${d.duration}h`}</p>
+          <p className="text-green-300 text-sm">{`Quality: ${d.quality}/10`}</p>
         </div>
       );
     }
     return null;
   };
 
-  // Get bar color based on duration
   const getBarColor = (duration, index) => {
     if (activeIndex !== null && activeIndex !== index) {
-      return 'rgba(59, 130, 246, 0.3)';
+      return "rgba(59, 130, 246, 0.3)";
     }
-    return duration < 7 ? '#f59e0b' : duration < 8 ? '#10b981' : '#3b82f6';
+    return duration < 7 ? "#f59e0b" : duration < 8 ? "#10b981" : "#3b82f6";
   };
 
-  // Calculate stats
-  const avgDuration = data.length > 0 
-    ? (data.reduce((sum, item) => sum + item.duration, 0) / data.length).toFixed(1)
+  const avgDuration = data.length
+    ? (data.reduce((sum, d) => sum + d.duration, 0) / data.length).toFixed(1)
     : 0;
 
-  const totalSleep = data.reduce((sum, item) => sum + item.duration, 0).toFixed(1);
+  const totalSleep = data.reduce((sum, d) => sum + d.duration, 0).toFixed(1);
 
   if (isLoading) {
     return (
@@ -106,12 +97,12 @@ const SleepChart = () => {
       {/* Header */}
       <div className="flex items-center justify-between mb-4">
         <div>
-          <h3 className="text-xl font-semibold text-gray-700">Sleep Duration This Week</h3>
-          <p className="text-sm text-gray-700">Hours of sleep tracking</p>
+          <h3 className="text-xl font-semibold text-white">Sleep Duration This Week</h3>
+          <p className="text-sm text-white">Hours of sleep tracking</p>
         </div>
         <div className="text-right">
           <div className="text-2xl font-bold text-blue-600">{avgDuration}</div>
-          <div className="text-xs text-gray-700">Avg Hours</div>
+          <div className="text-xs text-white">Avg Hours</div>
         </div>
       </div>
 
@@ -121,61 +112,55 @@ const SleepChart = () => {
           <ComposedChart
             data={data}
             margin={{ top: 10, right: 10, left: 0, bottom: 5 }}
-            onMouseEnter={(data, index) => setActiveIndex(index)}
+            onMouseEnter={(_, index) => setActiveIndex(index)}
             onMouseLeave={() => setActiveIndex(null)}
           >
             <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" />
-            <XAxis 
-              dataKey="name" 
+            <XAxis
+              dataKey="name"
               axisLine={false}
               tickLine={false}
-              tick={{ fontSize: 11, fill: '#64748b' }}
+              tick={{ fontSize: 11, fill: "#64748b" }}
             />
-            <YAxis 
+            <YAxis
               axisLine={false}
               tickLine={false}
-              tick={{ fontSize: 11, fill: '#64748b' }}
+              tick={{ fontSize: 11, fill: "#64748b" }}
               domain={[0, 10]}
               width={25}
             />
             <Tooltip content={<CustomTooltip />} />
-            
-            <Bar 
-              dataKey="duration" 
-              radius={[3, 3, 0, 0]}
-              maxBarSize={40}
-            >
+            <Bar dataKey="duration" radius={[3, 3, 0, 0]} maxBarSize={40}>
               {data.map((entry, index) => (
-                <Cell 
-                  key={`cell-${index}`} 
+                <Cell
+                  key={`cell-${index}`}
                   fill={getBarColor(entry.duration, index)}
                   className="transition-all duration-200 hover:opacity-80"
                 />
               ))}
             </Bar>
-            
-            <Line 
-              type="monotone" 
-              dataKey="quality" 
-              stroke="#10b981" 
+            <Line
+              type="monotone"
+              dataKey="quality"
+              stroke="#10b981"
               strokeWidth={2}
-              dot={{ 
-                fill: '#10b981', 
-                strokeWidth: 1, 
-                r: 3
+              dot={{
+                fill: "#10b981",
+                strokeWidth: 1,
+                r: 3,
               }}
-              activeDot={{ 
-                r: 5, 
-                fill: '#10b981',
-                stroke: '#ffffff',
-                strokeWidth: 2
+              activeDot={{
+                r: 5,
+                fill: "#10b981",
+                stroke: "#ffffff",
+                strokeWidth: 2,
               }}
             />
           </ComposedChart>
         </ResponsiveContainer>
       </div>
 
-      {/* Footer Stats */}
+      {/* Footer */}
       <div className="flex justify-between items-center mt-3 pt-3 border-t border-gray-100">
         <div className="flex items-center space-x-4">
           <div className="flex items-center space-x-2">
@@ -189,7 +174,7 @@ const SleepChart = () => {
         </div>
         <div className="text-right">
           <div className="text-sm font-medium text-gray-700">{totalSleep}h</div>
-          <div className="text-xs text-white">Total</div>
+          <div className="text-xs text-gray-500">Total</div>
         </div>
       </div>
     </div>

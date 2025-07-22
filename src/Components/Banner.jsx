@@ -18,7 +18,7 @@ const Banner = () => {
         <div className="flex flex-col lg:flex-row items-center justify-between gap-6 lg:gap-8">
           
           {/* Text Section */}
-          <div className={`flex-1 text-left max-w-2xl transform transition-all duration-1000 ${isVisible ? 'translate-x-0 opacity-100' : '-translate-x-10 opacity-0'}`}>
+          <div className={`flex-1 text-left max-w-2xl  ml-4 transform transition-all duration-1000 ${isVisible ? 'translate-x-0 opacity-100' : '-translate-x-10 opacity-0'}`}>
             
         
 

@@ -9,14 +9,14 @@ import {
 } from "recharts";
 import axios from "axios";
 
-// Helper to count logs within X days (using dayjs alternative)
+// Helper to count logs within X days
 const countLogsInDays = (logs, days) => {
   const cutoff = new Date();
   cutoff.setDate(cutoff.getDate() - days);
   return logs.filter(log => new Date(log.date) > cutoff).length;
 };
 
-const ProgressTinyAreaChart = () => {
+const ProgressBarChart = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [totalWorkouts, setTotalWorkouts] = useState(0);
@@ -34,19 +34,39 @@ const ProgressTinyAreaChart = () => {
           },
         });
 
-        const workouts = res.data;
-        const total = workouts.length || 1;
-        setTotalWorkouts(total);
+        const workouts = res.data || [];
+        const total = workouts.length || 1; // Avoid division by zero
+        setTotalWorkouts(workouts.length);
 
         const progressData = [
-          { name: "1D", period: "Today", uv: parseFloat(((countLogsInDays(workouts, 1) / total) * 100).toFixed(1)) },
-          { name: "1W", period: "This Week", uv: parseFloat(((countLogsInDays(workouts, 7) / total) * 100).toFixed(1)) },
-          { name: "1M", period: "This Month", uv: parseFloat(((countLogsInDays(workouts, 30) / total) * 100).toFixed(1)) },
-          { name: "3M", period: "3 Months", uv: parseFloat(((countLogsInDays(workouts, 90) / total) * 100).toFixed(1)) },
-          { name: "6M", period: "6 Months", uv: parseFloat(((countLogsInDays(workouts, 180) / total) * 100).toFixed(1)) },
+          {
+            name: "1D",
+            period: "Today",
+            uv: parseFloat(((countLogsInDays(workouts, 1) / total) * 100).toFixed(1)),
+          },
+          {
+            name: "1W",
+            period: "This Week",
+            uv: parseFloat(((countLogsInDays(workouts, 7) / total) * 100).toFixed(1)),
+          },
+          {
+            name: "1M",
+            period: "This Month",
+            uv: parseFloat(((countLogsInDays(workouts, 30) / total) * 100).toFixed(1)),
+          },
+          {
+            name: "3M",
+            period: "3 Months",
+            uv: parseFloat(((countLogsInDays(workouts, 90) / total) * 100).toFixed(1)),
+          },
+          {
+            name: "6M",
+            period: "6 Months",
+            uv: parseFloat(((countLogsInDays(workouts, 180) / total) * 100).toFixed(1)),
+          },
         ];
 
-        // Determine trend
+        // Determine trend: compare 1W vs 1M
         const recent = progressData[1].uv; // 1W
         const older = progressData[2].uv;   // 1M
         setTrend(recent >= older ? "up" : "down");
@@ -162,7 +182,6 @@ const ProgressTinyAreaChart = () => {
                     <stop offset="100%" stopColor="#60a5fa"/>
                   </linearGradient>
                   
-                  {/* Glow filter */}
                   <filter id="glow">
                     <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
                     <feMerge> 
@@ -218,7 +237,7 @@ const ProgressTinyAreaChart = () => {
           </div>
           
           <div className="flex gap-4">
-            {data.slice(0, 3).map((item, index) => (
+            {data.slice(0, 3).map((item) => (
               <div key={item.name} className="text-center">
                 <div className="text-white font-bold text-sm">{item.uv}%</div>
                 <div className="text-white/60 text-xs">{item.name}</div>
@@ -237,4 +256,4 @@ const ProgressTinyAreaChart = () => {
   );
 };
 
-export default ProgressTinyAreaChart;
+export default ProgressBarChart;

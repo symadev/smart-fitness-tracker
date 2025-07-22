@@ -25,7 +25,7 @@ const NutritionLogs = () => {
 
     try {
       await axios.post(
-        "http://localhost:5000/nutrition",
+        "http://localhost:5000/nutritions",
         {
           ...formData,
           userEmail,
