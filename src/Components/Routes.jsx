@@ -9,11 +9,12 @@ import Register from "./Register";
 import PrivateAdminRoute from "./PrivateAdminRoute";
 import DashBoard from "./Pages/DashBoard";
 import DashboardHome from "./Pages/DashboardHome";
-import WorkoutLogs from "./Pages/WorkoutLogs";
+
 import AiCoach from "./Pages/AiCoach";
 
 import AboutUs from "./AboutUs";
 import Users from "./Pages/Users";
+import WorkerLogs from "./Pages/WorkerLogs";
 
 
 const router = createBrowserRouter([
@@ -56,7 +57,7 @@ const router = createBrowserRouter([
     },
     {
       path: "workouts",
-      element: <WorkoutLogs />,
+      element: <WorkerLogs/>,
     },
     {
       path: "ai-coach",

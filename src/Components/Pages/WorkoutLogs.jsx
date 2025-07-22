@@ -62,7 +62,7 @@ const WorkoutLogs = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[#0f1f60]">
+   
       <div className="w-full max-w-md bg-gradient-to-r from-cyan-500 to-blue-600 text-white rounded-xl shadow-lg p-8">
         <h2 className="text-3xl font-bold text-center mb-6">Log Workout</h2>
 
@@ -131,7 +131,7 @@ const WorkoutLogs = () => {
           </button>
         </form>
       </div>
-    </div>
+  
   );
 };
 
