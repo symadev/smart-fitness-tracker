@@ -29,9 +29,7 @@ const Dashboard = () => {
           <li>
             <SidebarLink to="/dashboard/workouts" icon={<FaDumbbell />} text="Workout Logs" />
           </li>
-          <li>
-            <SidebarLink to="/dashboard/ai-coach" icon={<FaRobot />} text="AI Coach" />
-          </li>
+        
          
           <li>
             <SidebarLink to="/dashboard/user" icon={<FaCog />} text="Manage User" />

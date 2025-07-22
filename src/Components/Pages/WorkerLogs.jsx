@@ -4,7 +4,7 @@ import WorkoutLogs from "./WorkoutLogs";
 
 const WorkerLogs = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-r from-blue-950 to-blue-500 py-10 px-4 sm:px-10">
+    <div className="min-h-screen bg-gradient-to-r from-blue-950 to-blue-900 py-10 px-4 sm:px-10">
       <h2 className="text-3xl font-bold text-center text-cyan-300 mb-10">
         Log Your Health Activities
       </h2>

@@ -63,68 +63,72 @@ const SleepLogs = () => {
   };
 
   return (
-  
-      <div className="bg-gradient-to-r from-indigo-500 to-purple-600 rounded-xl p-8 w-full max-w-md text-white">
-        <h2 className="text-3xl font-bold text-center mb-6">Log Sleep</h2>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <input
-            type="number"
-            step="0.1"
-            name="duration"
-            placeholder="Sleep Duration (hrs)"
-            value={formData.duration}
-            onChange={handleChange}
-            required
-            className="w-full px-3 py-2 rounded bg-indigo-400 placeholder-white"
-          />
-          <input
-            type="date"
-            name="date"
-            value={formData.date}
-            onChange={handleChange}
-            required
-            className="w-full px-3 py-2 rounded bg-indigo-400 text-white"
-          />
-          <input
-            type="time"
-            name="startTime"
-            value={formData.startTime}
-            onChange={handleChange}
-            required
-            className="w-full px-3 py-2 rounded bg-indigo-400 text-white"
-          />
-          <input
-            type="time"
-            name="endTime"
-            value={formData.endTime}
-            onChange={handleChange}
-            required
-            className="w-full px-3 py-2 rounded bg-indigo-400 text-white"
-          />
-          <select
-            name="quality"
-            value={formData.quality}
-            onChange={handleChange}
-            required
-            className="w-full px-3 py-2 rounded bg-indigo-400 text-white"
-          >
-            <option value="">Select Sleep Quality</option>
-            <option value="Excellent">Excellent</option>
-            <option value="Good">Good</option>
-            <option value="Fair">Fair</option>
-            <option value="Poor">Poor</option>
-          </select>
+    <div className="bg-gradient-to-r from-indigo-500 to-purple-600 rounded-xl p-8 w-full max-w-md text-white">
+      <h2 className="text-3xl font-bold text-center mb-6">Log Sleep</h2>
 
-          <button
-            type="submit"
-            className="w-full py-2 bg-yellow-400 hover:bg-yellow-500 text-black font-semibold rounded"
-          >
-            Save Sleep Log
-          </button>
-        </form>
-      </div>
-  
+      <form onSubmit={handleSubmit} className="space-y-4">
+        <input
+          type="number"
+          step="0.1"
+          name="duration"
+          placeholder="Sleep Duration (hrs)"
+          value={formData.duration}
+          onChange={handleChange}
+          required
+          className="w-full px-3 py-2 rounded bg-indigo-400 placeholder-white"
+        />
+        <input
+          type="date"
+          name="date"
+          value={formData.date}
+          onChange={handleChange}
+          required
+          className="w-full px-3 py-2 rounded bg-indigo-400 text-white"
+        />
+        <label htmlFor="startTime" className="block mb-1 text-white">Sleep Start Time</label>
+        <input
+          type="time"
+          name="startTime"
+          value={formData.startTime}
+          onChange={handleChange}
+          required
+          className="w-full px-3 py-2 rounded bg-indigo-400 text-white"
+        />
+        <label htmlFor="endTime" className="block mb-1 text-white">Sleep End Time</label>
+        <input
+          type="time"
+          id="endTime"
+          name="endTime"
+          value={formData.endTime}
+          onChange={handleChange}
+          required
+          className="w-full px-3 py-2 rounded bg-indigo-400 text-white"
+        />
+
+        <select
+          name="quality"
+          value={formData.quality}
+          onChange={handleChange}
+          required
+          className="w-full px-3 py-2 rounded bg-indigo-400 text-white"
+        >
+          <option value="">Select Sleep Quality</option>
+          <option value="Excellent">Excellent</option>
+          <option value="Good">Good</option>
+          <option value="Fair">Fair</option>
+          <option value="Poor">Poor</option>
+        </select>
+
+        <button
+          type="submit"
+          className="w-full py-2 bg-yellow-400 hover:bg-yellow-500 text-black font-semibold rounded"
+        >
+          Save Sleep Log
+        </button>
+      </form>
+    </div>
+
   );
 };
 
