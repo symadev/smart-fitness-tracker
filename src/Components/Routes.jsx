@@ -43,7 +43,7 @@ const router = createBrowserRouter([
         element:<PrivateAdminRoute><DashBoard></DashBoard></PrivateAdminRoute>,
         children: [
           {
-      index: true, //  This makes DashboardHome the default
+      index: true, 
       element: <DashboardHome />,
     },
     

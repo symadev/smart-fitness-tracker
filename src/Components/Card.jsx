@@ -1,6 +1,23 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { AuthContext } from "./Provider.jsx/AuthContext";
+import { useNavigate } from 'react-router-dom';
 
 const Card = () => {
+
+  const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+
+
+  const handleFitnessClick = () => {
+    if (user) {
+      navigate('/dashboard/home');
+    } else {
+
+      navigate('/login');
+    }
+  };
+
   const cardData = [
     {
       title: "A mind-body practice that combines breathing, postures, and meditation",
@@ -95,9 +112,12 @@ const Card = () => {
 
         {/* Bottom CTA */}
         <div className="text-center mt-16">
-          <button className="px-8 py-4 bg-gradient-to-r from-purple-600 via-pink-500 to-blue-500 text-white font-bold text-lg rounded-full shadow-2xl hover:shadow-purple-500/25 transform hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-white/20 relative overflow-hidden group">
+          <button
+            onClick={handleFitnessClick}
+            className="relative px-8 py-4 bg-gradient-to-r from-purple-600 via-pink-500 to-blue-500 text-white font-bold text-lg rounded-full shadow-2xl overflow-hidden group transition-all duration-300 transform hover:scale-105 hover:-translate-y-1 border border-white/20"
+          >
+            <div className="absolute inset-0 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-0"></div>
             <span className="relative z-10">Start Your Fitness Journey</span>
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
           </button>
         </div>
       </div>

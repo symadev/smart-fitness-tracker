@@ -16,7 +16,7 @@ const AboutUs = () => {
       {/* Hero Section */}
       <div className="bg-[#0f1f60] min-h-[500px] flex flex-col lg:flex-row items-center justify-between px-6 py-12  text-white">
 
-        {/* Image */}
+      
 
         {/* Image Section */}
         <div className={`flex-1 flex justify-center  transform transition-all duration-1000 delay-300 ${isVisible ? 'translate-x-0 opacity-100' : 'translate-x-10 opacity-0'}`}>

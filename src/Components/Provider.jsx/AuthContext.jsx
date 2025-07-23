@@ -9,7 +9,7 @@ import {
   GoogleAuthProvider,
 } from "firebase/auth";
 import { app } from "./Firebase";
-import axios from "axios"; // Make sure axios is installed
+import axios from "axios"; 
 
 export const AuthContext = createContext(null);
 
