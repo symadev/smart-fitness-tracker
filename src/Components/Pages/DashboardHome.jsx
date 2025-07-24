@@ -2,6 +2,7 @@ import WorkoutSummary from "../WorkoutSummary";
 import ProgressTinyAreaChart from "../../Components/ProgressBarChart";
 import NutritionPieChart from "./NutritionPieChart";
 import SleepChart from "./SleepChart";
+import AIChatBox from "./AIChatBox";
 
 
 const DashboardHome = () => {
@@ -10,7 +11,7 @@ const DashboardHome = () => {
       <h1 className="text-cyan-300 text-4xl font-bold mb-6 text-center">Fitness Dashboard</h1>
 
       {/* Top Section */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-6 mb-8">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
         <WorkoutSummary />
         <ProgressTinyAreaChart />
         <NutritionPieChart />
@@ -25,9 +26,15 @@ const DashboardHome = () => {
           </div>
         </div>
 
+        {/* AI Coach - larger width */}
+        <div className="md:basis-2/3 h-full">
+          <div className="h-full">
+            <AIChatBox />
+          </div>
+        </div>
       </div>
     </div>
-  );
+  );;
 };
 
 export default DashboardHome;
