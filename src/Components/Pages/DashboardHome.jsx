@@ -17,7 +17,7 @@ const DashboardHome = () => {
         <NutritionPieChart />
       </div>
 
-      {/* SleepChart & AI Coach Side by Side */}
+      {/* SleepChart & AI Coach  */}
       <div className="flex flex-col md:flex-row gap-6">
         {/* SleepChart - smaller width */}
         <div className="md:basis-1/3 h-full">

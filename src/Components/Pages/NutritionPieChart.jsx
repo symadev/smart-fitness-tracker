@@ -55,7 +55,7 @@ const NutritionPieChart = () => {
 
         const logs = res.data || [];
 
-        // Filter logs from last 7 days for weekly count
+        //  logs from last 7 days for weekly count
         const cutoff = new Date();
         cutoff.setDate(cutoff.getDate() - 7);
         const weeklyLogs = logs.filter((log) => {

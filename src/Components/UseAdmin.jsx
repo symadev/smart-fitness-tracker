@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import useAuth from "../Components/Provider.jsx/UseAuth"; // যদি আলাদা useAuth বানানো থাকে
+import useAuth from "../Components/Provider.jsx/UseAuth"; 
 import axios from "axios";
 
 const UseAdmin = () => {
@@ -27,4 +27,6 @@ const UseAdmin = () => {
 
 export default UseAdmin;
 
-// এখানে /users/admin/:email এই API বানাতে হবে Backend-এ। এটা বলবে এই email এর ইউজার admin কিনা।
+
+
+//  users/admin/:email this is for the backend route , that tell that if the email user is an admin

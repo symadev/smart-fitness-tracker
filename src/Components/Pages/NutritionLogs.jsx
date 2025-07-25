@@ -40,7 +40,7 @@ const NutritionLogs = () => {
       Swal.fire({
         icon: "success",
         title: "Nutrition Saved!",
-        text: "Your nutrition log has been saved successfully.",
+        text: "Your nutrition log  saved successfully.",
         background: "#1e293b",
         color: "#f1f5f9",
         confirmButtonColor: "#10b981",

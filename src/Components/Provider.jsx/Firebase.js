@@ -1,18 +1,19 @@
-// Import the functions you need from the SDKs you need
+// Import the functions 
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 
 
-// Your web app's Firebase configuration
+// my  web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyDzoiKXtYmapYLzHGZLLysWjcTEMsxlcFI",
-  authDomain: "smartfit-tracker.firebaseapp.com",
-  projectId: "smartfit-tracker",
-  storageBucket: "smartfit-tracker.firebasestorage.app",
-  messagingSenderId: "436786707181",
-  appId: "1:436786707181:web:6337a07a83939d95b22ae4"
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
 };
 
-// Initialize Firebase
+
+// Initialize 
  export const app = initializeApp(firebaseConfig);
    export const auth = getAuth(app);

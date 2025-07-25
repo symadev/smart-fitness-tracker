@@ -40,7 +40,7 @@ const SleepLogs = () => {
       Swal.fire({
         icon: "success",
         title: "Sleep Log Saved",
-        text: "Your sleep record has been successfully saved!",
+        text: "Your sleep record successfully saved!",
         background: "#1e293b",
         color: "#f1f5f9",
         confirmButtonColor: "#10b981",

@@ -1,4 +1,4 @@
-// Dashboard.jsx
+
 import { useState, useEffect } from "react";
 import { NavLink, Outlet } from "react-router-dom";
 import { FaHome, FaDumbbell, FaRobot, FaCog, FaUser, FaBars, FaTimes } from "react-icons/fa";

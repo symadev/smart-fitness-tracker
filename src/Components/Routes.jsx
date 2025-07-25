@@ -1,6 +1,6 @@
 import {
   createBrowserRouter,
-  
+
 } from "react-router-dom";
 import MainLayout from "./MainLayout";
 import Home from "./Home";
@@ -21,48 +21,48 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <div><MainLayout></MainLayout></div>,
-     children: [
+    children: [
       {
         path: "/",
-        element:<Home></Home>,
+        element: <Home></Home>,
       },
       {
         path: "AboutUs",
-        element:<AboutUs></AboutUs>,
+        element: <AboutUs></AboutUs>,
       },
       {
         path: "login",
-        element:<Login></Login>
+        element: <Login></Login>
       },
       {
         path: "register",
-        element:<Register></Register>
+        element: <Register></Register>
       },
-       {
+      {
         path: "dashboard",
-        element:<PrivateAdminRoute><DashBoard></DashBoard></PrivateAdminRoute>,
+        element: <PrivateAdminRoute><DashBoard></DashBoard></PrivateAdminRoute>,
         children: [
           {
-      index: true, 
-      element: <DashboardHome />,
-    },
-    
-    {
-      path: "home",
-      element: <DashboardHome />,
-    },
-    {
-      path: "user",
-      element:<Users></Users>,
-    },
-    {
-      path: "workouts",
-      element: <WorkerLogs/>,
-    },
-  
-   
-  ],
-       },
+            index: true,
+            element: <DashboardHome />,
+          },
+
+          {
+            path: "home",
+            element: <DashboardHome />,
+          },
+          {
+            path: "user",
+            element: <Users></Users>,
+          },
+          {
+            path: "workouts",
+            element: <WorkerLogs />,
+          },
+
+
+        ],
+      },
     ],
   },
 ]);

@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { AuthContext } from "./AuthContext"; // তোমার path অনুযায়ী adjust করবে
+import { AuthContext } from "./AuthContext";
 
 const UseAuth = () => {
   const auth = useContext(AuthContext);

@@ -34,11 +34,11 @@ const WorkoutLogs = () => {
         }
       );
 
-      // Show success popup
+      // Show success popup here 
       Swal.fire({
         icon: "success",
         title: "Workout Saved!",
-        text: "Your workout log has been saved successfully.",
+        text: "Your workout log saved successfully.",
         background: "#1e293b",
         color: "#f1f5f9",
         confirmButtonColor: "#10b981",

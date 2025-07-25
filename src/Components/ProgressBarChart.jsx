@@ -66,9 +66,9 @@ const ProgressBarChart = () => {
           },
         ];
 
-        // Determine trend: compare 1W vs 1M
-        const recent = progressData[1].uv; // 1W
-        const older = progressData[2].uv;   // 1M
+        //  compare 1W vs 1M
+        const recent = progressData[1].uv; // 1Week
+        const older = progressData[2].uv;   // 1Month
         setTrend(recent >= older ? "up" : "down");
 
         setData(progressData);
