@@ -6,7 +6,7 @@ const Feature = () => {
     const [isVisible, setIsVisible] = useState(false);
 
     useEffect(() => {
-        fetch('./feature.json')
+        fetch('/feature.json')
             .then(res => res.json())
             .then(data => setFeatures(data))
     }, []);

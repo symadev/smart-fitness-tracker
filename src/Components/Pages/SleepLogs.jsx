@@ -25,7 +25,7 @@ const SleepLogs = () => {
 
     try {
       await axios.post(
-        "http://localhost:5000/sleeps",
+        "https://fitness-server-lilac.vercel.app/sleeps",
         {
           ...formData,
           userEmail,

@@ -22,7 +22,7 @@ const WorkoutLogs = () => {
 
     try {
       const res = await axios.post(
-        "http://localhost:5000/workouts",
+        "https://fitness-server-lilac.vercel.app/workouts",
         {
           ...formData,
           userEmail,

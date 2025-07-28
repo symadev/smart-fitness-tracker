@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import img1 from "../assets/images/1.jpg";
+
 import { useState, useEffect } from "react";
 
 const Banner = () => {
@@ -76,7 +76,7 @@ const Banner = () => {
               {/* Main image */}
               <div className="relative">
                 <img
-                  src={img1}
+                  src="/assets/1.jpg"
                   alt="Workout"
                   className="w-96 h-96 max-w-full object-cover rounded-full border-4 border-white border-opacity-20 shadow-2xl group-hover:scale-105 transition-all duration-500 relative z-10"
                 />

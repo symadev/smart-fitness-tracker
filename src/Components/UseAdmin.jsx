@@ -9,7 +9,7 @@ const UseAdmin = () => {
 
   useEffect(() => {
     if (user) {
-         axios.get(`http://localhost:5000/user/admin/${user.email}`,{
+         axios.get(`https://fitness-server-lilac.vercel.app/user/admin/${user.email}`,{
           headers: {
             Authorization: `Bearer ${localStorage.getItem("access-token")}`
           }

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import img1 from "../assets/images/Health-Coaching-Services-Downtown-Austin-TX-scaled.jpg";
+
 import CardSecond from "./CardSecond";
 import Motivation from "./Motivation";
 import Summery from "./Summery";
@@ -32,7 +32,7 @@ const AboutUs = () => {
             {/* Main image */}
             <div className="relative">
               <img
-                src={img1}
+                src="/assets/Health-Coaching-Services-Downtown-Austin-TX-scaled.jpg"
                 alt="Workout"
                 className="w-96 h-96 max-w-full object-cover rounded-full border-4 border-white border-opacity-20 shadow-2xl group-hover:scale-105 transition-all duration-500 relative z-10"
               />

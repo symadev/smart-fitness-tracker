@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import img1 from "../assets/images/trainer.jpg";
+
 
 const Motivation = () => {
   return (
@@ -17,7 +17,7 @@ const Motivation = () => {
           {/* Glow Border */}
           <div className="absolute -inset-4 bg-gradient-to-tr from-yellow-400 via-blue-500 to-purple-600 opacity-30 rounded-2xl blur-2xl z-0 animate-pulse" />
           <img
-            src={img1}
+            src="/assets/trainer.jpg"
             alt="Founder"
             className="relative z-10 w-80 h-80 object-cover rounded-2xl border-3 border-blue-500 shadow-2xl"
           />

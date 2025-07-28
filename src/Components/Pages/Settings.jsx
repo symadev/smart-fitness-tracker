@@ -15,7 +15,7 @@ const Settings = () => {
   }
 
  
-     axios.get("http://localhost:5000/user/profile",
+     axios.get("https://fitness-server-lilac.vercel.app/user/profile",
  {
       headers: { Authorization: `Bearer ${token}` },
     })
@@ -38,7 +38,7 @@ const Settings = () => {
   const token = localStorage.getItem("access-token");
 
   axios
-    .patch("http://localhost:5000/user/update", { name, email }, {
+    .patch("https://fitness-server-lilac.vercel.app/user/update", { name, email }, {
       headers: { Authorization: `Bearer ${token}` },
     })
     .then(() => {

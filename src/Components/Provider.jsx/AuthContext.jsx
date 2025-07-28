@@ -51,7 +51,7 @@ const AuthProvider = ({ children }) => {
         const userInfo = { email: currentUser.email };
 
         axios
-          .post("http://localhost:5000/jwt", userInfo)
+          .post("https://fitness-server-lilac.vercel.app/jwt", userInfo)
           .then((res) => {
             localStorage.setItem("access-token", res.data.token);
           })

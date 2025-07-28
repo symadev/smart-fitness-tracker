@@ -14,7 +14,7 @@ const Users = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/user", {
+      .get("https://fitness-server-lilac.vercel.app/user", {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
@@ -59,7 +59,7 @@ const Users = () => {
 
     try {
       await axios.patch(
-        `http://localhost:5000/user/${id}/role`,
+        `https://fitness-server-lilac.vercel.app/user/${id}/role`,
         { role: newRole },
         { headers: { Authorization: `Bearer ${token}` } }
       );

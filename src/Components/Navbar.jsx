@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import logo from "../assets/gym logo.png";
+
 import { AuthContext } from "./Provider.jsx/AuthContext";
 import { useContext, useState } from "react";
 
@@ -27,7 +27,7 @@ const Navbar = () => {
           <div className="relative group">
             <img
               className="w-12 h-12 rounded-full object-cover ring-2 ring-yellow-400/50 transition-all duration-300 group-hover:ring-yellow-400 group-hover:scale-110 group-hover:rotate-6"
-              src={logo}
+              src="/assets/gym logo.png"
               alt="Logo"
             />
             <div className="absolute inset-0 rounded-full bg-yellow-400/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>

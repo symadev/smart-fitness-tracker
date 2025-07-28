@@ -23,7 +23,7 @@ const SleepChart = () => {
       const token = localStorage.getItem("access-token");
 
       try {
-        const res = await axios.get("http://localhost:5000/sleeps", {
+        const res = await axios.get("https://fitness-server-lilac.vercel.app/sleeps", {
           headers: {
             Authorization: `Bearer ${token}`,
           },

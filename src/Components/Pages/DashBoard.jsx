@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import { NavLink, Outlet } from "react-router-dom";
 import { FaHome, FaDumbbell, FaRobot, FaCog, FaUser, FaBars, FaTimes } from "react-icons/fa";
-import logo from "../../assets/images/gym logo.png";
+
 
 const Dashboard = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -52,7 +52,7 @@ const Dashboard = () => {
           <div className="flex items-center gap-3">
             <div className="w-8 h-8 rounded-lg bg-gradient-to-r from-blue-500 to-purple-600 p-0.5">
               <div className="w-full h-full flex items-center justify-center">
-                <img src={logo} alt="SmartFit Logo" className="w-6 h-6 object-contain" />
+                <img src="/assets/gym logo.png" alt="SmartFit Logo" className="w-6 h-6 object-contain" />
               </div>
             </div>
             <span className="text-lg font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
@@ -99,7 +99,7 @@ const Dashboard = () => {
         <div className={`relative z-10 flex flex-col items-center px-6 border-b border-slate-700/50 ${isMobile ? 'py-4' : 'py-8'}`}>
           <div className="w-16 h-16 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 p-0.5 mb-3 shadow-lg">
             <div className="w-full h-full flex items-center justify-center">
-              <img src={logo} alt="SmartFit Logo" className="w-12 h-12 object-contain" />
+              <img src="/assets/gym logo.png"alt="SmartFit Logo" className="w-12 h-12 object-contain" />
             </div>
           </div>
           <span className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">

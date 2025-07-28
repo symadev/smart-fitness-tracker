@@ -28,7 +28,7 @@ const ProgressBarChart = () => {
       const token = localStorage.getItem("access-token");
 
       try {
-        const res = await axios.get("http://localhost:5000/workouts", {
+        const res = await axios.get("https://fitness-server-lilac.vercel.app/workouts", {
           headers: {
             Authorization: `Bearer ${token}`,
           },

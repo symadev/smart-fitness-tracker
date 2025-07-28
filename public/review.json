@@ -3,20 +3,20 @@
     {
         "_id": "6430110af5a7e52ce1e8fa67",
         "name": "Monika Harlin",
-        "image":"/src/assets/images/Ellipse 90.png",
+        "image":"/assets/Ellipse 90.png",
         "details": "I've never felt so relaxed and focused. The instructors are supportive and the atmosphere is calming. Highly recommend for anyone starting their wellness journey! ",
         "rating": 5
     },
     {
         "_id": "64301123f5a7e52ce1e8fa68",
         "name": "Sarah Smith",
-        "image":"/src/assets/images/Ellipse 91.png",
+        "image":"/assets/Ellipse 91.png",
         "details": "I've gained more confidence and energy since joining. The program is beginner-friendly but still pushes you to grow. Just wish there were more early morning slots.",
         "rating": 4
     },
     {
         "_id": "6430113af5a7e52ce1e8fa69",
-        "image":"/src/assets/images/Ellipse 92.png",
+        "image":"/assets/Ellipse 92.png",
         "name": "Robert Johnson",
         "details": "Every class leaves me feeling stronger and more centered. The facility is clean, the staff is friendly, and the vibe is always positive.!",
         "rating": 5

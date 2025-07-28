@@ -20,7 +20,7 @@ const Register = () => {
           role: 'user',
           createdAt: new Date()
         };
-        axios.post('http://localhost:5000/user', newUser)
+        axios.post('https://fitness-server-lilac.vercel.app/user', newUser)
           .then(() => {
             reset();
             Swal.fire({

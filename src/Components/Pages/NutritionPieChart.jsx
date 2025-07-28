@@ -47,7 +47,7 @@ const NutritionPieChart = () => {
       try {
         const token = localStorage.getItem("access-token");
 
-        const res = await axios.get("http://localhost:5000/nutritions", {
+        const res = await axios.get("https://fitness-server-lilac.vercel.app/nutritions", {
           headers: {
             Authorization: `Bearer ${token}`,
           },

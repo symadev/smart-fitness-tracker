@@ -1,4 +1,4 @@
-import img2 from "../assets/images/123.jpg";
+
 
 const Summery = () => {
   return (
@@ -36,7 +36,7 @@ const Summery = () => {
 
             {/* Main Image */}
             <img
-              src={img2}
+              src="/assets/123.jpg"
               alt="SmartFit Workout"
               className="relative z-10 w-full h-auto object-cover rounded-2xl border-4 border-white/10 shadow-2xl group-hover:scale-[1.02] transition-all duration-500"
             />

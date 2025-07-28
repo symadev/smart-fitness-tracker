@@ -4,22 +4,22 @@ const CardSecond = () => {
   const cardData = [
     {
       title: "Personalized Workout Logs & Daily Tracking",
-      image: "/src/assets/images/ai.png",
+      image: "/assets/ai.png",
       delay: 0,
     },
     {
       title: "Progress Tracking: Visualize fitness improvements in real time.",
-      image: "/src/assets/images/graph.png",
+      image: "/assets/graph.png",
       delay: 0.2,
     },
     {
       title: "Smart Goals: Adjusts to your pace and lifestyle",
-      image: "/src/assets/images/target.png",
+      image: "/assets/target.png",
       delay: 0.4,
     },
     {
       title: "Data Privacy: Your fitness data stays secure",
-      image: "/src/assets/images/lock.png",
+      image: "/assets/lock.png",
       delay: 0.6,
     },
   ];
