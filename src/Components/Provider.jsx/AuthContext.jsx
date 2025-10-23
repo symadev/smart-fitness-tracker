@@ -48,7 +48,7 @@ useEffect(() => {
       try {
         // First, generate JWT for this user
         const tokenRes = await axios.post(
-          "http://localhost:5000/jwt",
+          "https://fitness-server-lilac.vercel.app/jwt",
           { email: currentUser.email }
         );
         const token = tokenRes.data.token;
@@ -56,7 +56,7 @@ useEffect(() => {
 
         // Then, get user info (role) from backend
         const res = await axios.get(
-          `http://localhost:5000/user/${currentUser.email}`,
+          `https://fitness-server-lilac.vercel.app/user/${currentUser.email}`,
           { headers: { Authorization: `Bearer ${token}` } }
         );
 

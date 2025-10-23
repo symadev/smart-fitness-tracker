@@ -14,7 +14,7 @@ const TrainerDashboard = () => {
         const token = localStorage.getItem("access-token");
         if (!token) throw new Error("No access token found");
 
-        const res = await axios.get("http://localhost:5000/trainer/bookings", {
+        const res = await axios.get("https://fitness-server-lilac.vercel.apptrainer/bookings", {
           headers: { Authorization: `Bearer ${token}` },
         });
 
@@ -36,7 +36,7 @@ const TrainerDashboard = () => {
       if (!token) throw new Error("No access token found");
 
       const res = await axios.patch(
-        `http://localhost:5000/bookings/${id}/confirm`,
+        `https://fitness-server-lilac.vercel.appbookings/${id}/confirm`,
         {},
         { headers: { Authorization: `Bearer ${token}` } }
       );

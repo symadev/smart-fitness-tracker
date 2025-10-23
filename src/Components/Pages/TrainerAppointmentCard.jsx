@@ -19,7 +19,7 @@ const TrainerAppointmentCard = () => {
     const fetchAppointments = async () => {
       try {
         const token = localStorage.getItem("access-token");
-        const res = await axios.get("http://localhost:5000/bookings", {
+        const res = await axios.get("https://fitness-server-lilac.vercel.app/bookings", {
           headers: { Authorization: `Bearer ${token}` },
         });
         setAppointments(res.data);
@@ -55,7 +55,7 @@ const TrainerAppointmentCard = () => {
 
       try {
         const token = localStorage.getItem("access-token");
-        const res = await axios.post("http://localhost:5000/bookings", bookingData, {
+        const res = await axios.post("https://fitness-server-lilac.vercel.app/bookings", bookingData, {
           headers: { Authorization: `Bearer ${token}` },
         });
 
