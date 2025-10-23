@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import CardSecond from "./CardSecond";
 import Motivation from "./Motivation";
 import Summery from "./Summery";
+import Trainer from "./Trainer";
 
 const AboutUs = () => {
 
@@ -66,7 +67,13 @@ const AboutUs = () => {
       <div className=" bg-blue-50">
         <Motivation />
       </div>
+
+        <div className=" bg-white">
+        <Trainer />
+      </div>
     </div>
+
+  
   );
 };
 
