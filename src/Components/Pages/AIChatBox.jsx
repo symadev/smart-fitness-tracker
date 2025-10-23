@@ -27,7 +27,7 @@ const AIChatBox = () => {
     } catch (err) {
       setMessages((prev) => [
         ...prev,
-        { role: "ai", content: "⚠️ AI response failed!" },
+        { role: "ai", content: " AI response failed!" },
       ]);
     } finally {
       setLoading(false);

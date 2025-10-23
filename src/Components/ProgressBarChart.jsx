@@ -35,7 +35,7 @@ const ProgressBarChart = () => {
         });
 
         const workouts = res.data || [];
-        const total = workouts.length || 1; // Avoid division by zero
+        const total = workouts.length || 1; 
         setTotalWorkouts(workouts.length);
 
         const progressData = [
@@ -66,7 +66,7 @@ const ProgressBarChart = () => {
           },
         ];
 
-        //  compare 1W vs 1M
+    
         const recent = progressData[1].uv; // 1Week
         const older = progressData[2].uv;   // 1Month
         setTrend(recent >= older ? "up" : "down");

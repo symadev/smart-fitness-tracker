@@ -9,7 +9,7 @@ import {
   GoogleAuthProvider,
 } from "firebase/auth";
 import { app } from "./Firebase";
-import axios from "axios"; 
+import axios from "axios";
 
 export const AuthContext = createContext(null);
 
@@ -41,30 +41,50 @@ const AuthProvider = ({ children }) => {
     return signOut(auth);
   };
 
-  // Get JWT token when user is authenticated
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
-      setLoading(false);
+useEffect(() => {
+  const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
+    setLoading(true);
+    if (currentUser) {
+      try {
+        // First, generate JWT for this user
+        const tokenRes = await axios.post(
+          "http://localhost:5000/jwt",
+          { email: currentUser.email }
+        );
+        const token = tokenRes.data.token;
+        localStorage.setItem("access-token", token);
 
-      if (currentUser) {
-        const userInfo = { email: currentUser.email };
+        // Then, get user info (role) from backend
+        const res = await axios.get(
+          `http://localhost:5000/user/${currentUser.email}`,
+          { headers: { Authorization: `Bearer ${token}` } }
+        );
 
-        axios
-          .post("https://fitness-server-lilac.vercel.app/jwt", userInfo)
-          .then((res) => {
-            localStorage.setItem("access-token", res.data.token);
-          })
-          .catch((err) => {
-            console.error("JWT error:", err);
-          });
-      } else {
-        localStorage.removeItem("access-token");
+        const userData = {
+          email: currentUser.email,
+          displayName: currentUser.displayName,
+          photoURL: currentUser.photoURL,
+          role: res.data.role || "user",
+        };
+        setUser(userData);
+      } catch (err) {
+        console.error("Error fetching user:", err);
+        setUser({
+          email: currentUser.email,
+          displayName: currentUser.displayName,
+          photoURL: currentUser.photoURL,
+          role: "user",
+        });
       }
-    });
+    } else {
+      setUser(null);
+      localStorage.removeItem("access-token");
+    }
+    setLoading(false);
+  });
 
-    return () => unsubscribe();
-  }, []);
+  return () => unsubscribe();
+}, []);
 
   const authInfo = {
     user,

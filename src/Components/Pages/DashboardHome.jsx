@@ -2,7 +2,7 @@ import WorkoutSummary from "../WorkoutSummary";
 import ProgressTinyAreaChart from "../../Components/ProgressBarChart";
 import NutritionPieChart from "./NutritionPieChart";
 import SleepChart from "./SleepChart";
-import BookAppointment from "./TrainerAppointmentCard";
+
 import TrainerAppointmentCard from "./TrainerAppointmentCard";
 
 
