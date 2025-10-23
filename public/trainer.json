@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "name": "Alex Jones",
+    "role": "Strength Coach",
+    "specialty": "HIIT & Fat Loss",
+    "rating": 4.9,
+    "bio": "10+ years of experience in transforming physiques with science-backed training.",
+    "image": "/assets/jon.jpg",
+    "available": true
+  },
+  {
+    "id": 2,
+    "name": "Smith Tom",
+    "role": "Fitness Trainer",
+    "specialty": "Muscle Gain",
+    "rating": 4.8,
+    "bio": "Certified body specialist helping clients build muscle and confidence.",
+    "image": "/assets/tom.jpeg",
+    "available": true
+  },
+  {
+    "id": 3,
+    "name": "Maria Adni",
+    "role": "Yoga & Mobility Coach",
+    "specialty": "Yoga / Flexibility",
+    "rating": 4.9,
+    "bio": "Mind-body balance expert specializing in deep stretches and mobility training.",
+    "image": "/assets/maria.jpeg",
+    "available": true
+  },
+  {
+    "id": 4,
+    "name": "Mohin Ahad",
+    "role": "Cardio Specialist",
+    "specialty": "Endurance & Cardio",
+    "rating": 4.7,
+    "bio": "Focused on stamina building, endurance training, and performance fitness.",
+    "image": "/assets/ahad.jpg",
+    "available": false
+  }
+]

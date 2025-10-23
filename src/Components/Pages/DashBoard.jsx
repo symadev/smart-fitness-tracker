@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from "react";
 import { NavLink, Outlet } from "react-router-dom";
-import { FaHome, FaDumbbell, FaRobot, FaCog, FaUser, FaBars, FaTimes } from "react-icons/fa";
+import { FaHome, FaDumbbell, FaRobot, FaCog, FaUser, FaBars, FaTimes, FaChartBar } from "react-icons/fa";
 
 
 const Dashboard = () => {
@@ -128,6 +128,12 @@ const Dashboard = () => {
             to="/dashboard/workouts" 
             icon={<FaDumbbell />} 
             text="Workout Logs"
+            onClick={handleLinkClick}
+          />
+          <SidebarLink 
+            to="/dashboard/aibot" 
+            icon={<FaChartBar />} 
+            text="Ai Coach"
             onClick={handleLinkClick}
           />
           <SidebarLink 

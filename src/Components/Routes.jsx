@@ -14,6 +14,7 @@ import DashboardHome from "./Pages/DashboardHome";
 import AboutUs from "./AboutUs";
 import Users from "./Pages/Users";
 import WorkerLogs from "./Pages/WorkerLogs";
+import AIChatBox from "./Pages/AIChatBox";
 
 
 
@@ -50,6 +51,10 @@ const router = createBrowserRouter([
           {
             path: "home",
             element: <DashboardHome />,
+          },
+          {
+            path: "aibot",
+            element: <AIChatBox/>,
           },
           {
             path: "user",
