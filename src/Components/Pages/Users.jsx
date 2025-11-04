@@ -179,6 +179,7 @@ const Users = () => {
                 <option value="all">All Roles</option>
                 <option value="user">Users Only</option>
                 <option value="admin">Admins Only</option>
+                <option value="trainer">Trainer Only</option>
               </select>
             </div>
           </div>
@@ -254,6 +255,7 @@ const Users = () => {
                           >
                             <option value="user">User</option>
                             <option value="admin">Admin</option>
+                            <option value="trainer">Trainer</option>
                           </select>
                           {updatingUsers.has(user._id) && (
                             <FaSpinner className="animate-spin absolute right-3 top-1/2 transform -translate-y-1/2 text-blue-500" />

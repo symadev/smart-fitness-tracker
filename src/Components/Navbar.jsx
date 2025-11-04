@@ -15,10 +15,13 @@ const Navbar = () => {
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
   // Role-based dashboard link
-  const dashboardLink =
-    user?.role === "trainer"
-      ? "/trainer-dashboard"  // Fixed: match your router path
-      : "/dashboard";         // admin or default user dashboard
+  
+    const dashboardLink =
+    user?.role === "admin"
+      ? "/admin-dashboard"
+      : user?.role === "trainer"
+      ? "/trainer-dashboard"
+      : "/dashboard";//default for the user       
 
   return (
     <nav className="relative">

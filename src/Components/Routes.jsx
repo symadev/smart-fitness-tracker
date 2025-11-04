@@ -9,14 +9,13 @@ import Register from "./Register";
 import PrivateAdminRoute from "./PrivateAdminRoute";
 import DashBoard from "./Pages/DashBoard";
 import DashboardHome from "./Pages/DashboardHome";
-
-
 import AboutUs from "./AboutUs";
 import Users from "./Pages/Users";
 import WorkerLogs from "./Pages/WorkerLogs";
 import AIChatBox from "./Pages/AIChatBox";
 import TrainerDashboard from "./Pages/TrainerDashboard";
 import PrivateTrainerRoute from "./PrivateTrainerRoute";
+import AdminDashboard from "./AdminDashboard";
 
 
 
@@ -43,12 +42,30 @@ const router = createBrowserRouter([
       },
       {
         path: "trainer-dashboard",
-
         element: (
           <PrivateTrainerRoute>
             <TrainerDashboard />
           </PrivateTrainerRoute>
         ),
+      },
+
+      {
+        path: "/admin-dashboard",
+        element: (
+          <PrivateAdminRoute>
+            <AdminDashboard />
+          </PrivateAdminRoute>
+        ),
+        children: [
+          {
+            index: true,
+            element: <Users/>
+          },
+          {
+            path: "user",
+            element: <Users/>
+          },
+        ],
       },
       {
         path: "dashboard",
@@ -67,10 +84,7 @@ const router = createBrowserRouter([
             path: "aibot",
             element: <AIChatBox />,
           },
-          {
-            path: "user",
-            element: <Users></Users>,
-          },
+
           {
             path: "workouts",
             element: <WorkerLogs />,
