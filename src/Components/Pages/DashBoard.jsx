@@ -2,11 +2,14 @@
 import { useState, useEffect } from "react";
 import { NavLink, Outlet } from "react-router-dom";
 import { FaHome, FaDumbbell,  FaUser, FaBars, FaTimes, FaChartBar } from "react-icons/fa";
+import UseAdmin from "../UseAdmin";
 
 
 const Dashboard = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+   const [isAdmin, isAdminLoading] = UseAdmin(); 
+
 
   // Check if screen is mobile size
   useEffect(() => {
@@ -35,6 +38,15 @@ const Dashboard = () => {
       setIsSidebarOpen(false);
     }
   };
+
+
+   if (isAdminLoading) {
+    return (
+      <div className="flex items-center justify-center min-h-screen text-blue-600 font-semibold">
+        Checking admin status...
+      </div>
+    );
+  }
 
   return (
     <div className="flex min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 relative">
@@ -136,6 +148,8 @@ const Dashboard = () => {
             text="Ai Coach"
             onClick={handleLinkClick}
           />
+           {isAdmin && (
+          <>
           <SidebarLink 
             to="/dashboard/user" 
             icon={<FaUser />} 
@@ -155,6 +169,8 @@ const Dashboard = () => {
             isSecondary={true}
             onClick={handleLinkClick}
           />
+          </>
+         )}
         </nav>
 
         {/* Footer */}
