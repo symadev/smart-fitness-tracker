@@ -24,10 +24,10 @@ const Banner = () => {
           >
             {/* Main Heading */}
             <h1 className="text-5xl md:text-7xl font-extrabold mb-6 leading-tight">
-              <span className="bg-gradient-to-r from-white via-yellow-100 to-yellow-400 bg-clip-text text-transparent block">
+              <span className="bg-white bg-clip-text text-transparent block">
                 Your Fitness Journey
               </span>
-              <span className="bg-gradient-to-r from-yellow-400 via-yellow-200 to-white bg-clip-text text-transparent block">
+              <span className="bg-white bg-clip-text text-transparent block">
                 Powered by AI
               </span>
             </h1>

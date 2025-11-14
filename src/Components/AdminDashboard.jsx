@@ -35,7 +35,7 @@ const AdminDashboard = () => {
   if (!isAdmin) {
     return (
       <div className="flex flex-col justify-center items-center h-screen text-red-500 font-semibold">
-        Access Denied ❌
+        Access Denied 
         <p className="text-sm text-gray-600 mt-2">Admins only</p>
       </div>
     );

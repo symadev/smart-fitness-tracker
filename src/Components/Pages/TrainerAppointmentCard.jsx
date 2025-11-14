@@ -62,7 +62,7 @@ const TrainerAppointmentCard = () => {
         if (res.data.insertedId) {
           const newBooking = { ...bookingData, _id: res.data.insertedId, status: "pending" };
           setAppointments(prev => [...prev, newBooking]); // Add new booking locally
-          alert("✅ Appointment booked successfully!");
+          alert(" Appointment booked successfully!");
           setCurrentView("appointments");
         }
       } catch (error) {
